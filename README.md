@@ -1,4 +1,4 @@
-# Ana | UX Research & Narrative Design
+# Sana | UX Research & Narrative Design
 ### Bridging the gap between human emotion and AI coherence.
 
 Current Focus:
