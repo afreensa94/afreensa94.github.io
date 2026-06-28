@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Qin — HCI Researcher & Narrative Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           DESIGN TOKENS
+        ============================================ */
+        :root {
+            --bg-deep:        #1C2432;
+            --bg-mid:         #232D3F;
+            --paper:          #F0E8DC;
+            --paper-warm:     #EDE0CF;
+            --ink:            #1C2432;
+            --ink-muted:      #4A5568;
+            --text-light:     #F0E8DC;
+            --text-muted:     #9AAEC1;
+            --accent-sage:    #7A9B6F;
+            --accent-bronze:  #B8845A;
+            --border-light:   rgba(240,232,220,0.10);
+            --shadow-paper:   0 4px 28px rgba(0,0,0,0.38), 0 1px 4px rgba(0,0,0,0.2);
+            --shadow-hover:   0 10px 48px rgba(0,0,0,0.50), 0 2px 8px rgba(0,0,0,0.25);
+            --font-display:   'Cormorant Garamond', Georgia, serif;
+            --font-body:      'DM Sans', system-ui, sans-serif;
+            --font-mono:      'DM Mono', monospace;
+        }
+
+        /* ============================================
+           RESET & BASE
+        ============================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           NAV
+        ============================================ */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.25rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(28,36,50,0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 0.06em;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--text-light); }
+
+        /* ============================================
+           HERO
+        ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 9rem 3rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -15%;
+            right: -5%;
+            width: 55vw;
+            height: 55vw;
+            background: radial-gradient(ellipse, rgba(122,155,111,0.07) 0%, transparent 68%);
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent-sage);
+            margin-bottom: 1.75rem;
+        }
+
+        .hero-name {
+            font-family: var(--font-display);
+            font-size: clamp(4.5rem, 11vw, 10rem);
+            font-weight: 300;
+            line-height: 0.88;
+            letter-spacing: -0.02em;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .hero-name em {
+            font-style: italic;
+            color: var(--paper-warm);
+        }
+
+        .hero-thesis {
+            max-width: 560px;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-bottom: 3rem;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.38rem 0.9rem;
+            border: 1px solid var(--border-light);
+            color: var(--text-muted);
+            border-radius: 2px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            background: var(--paper);
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.83rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            border-radius: 2px;
+            transition: all 0.22s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--paper-warm);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            border: 1px solid var(--border-light);
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.83rem;
+            letter-spacing: 0.04em;
+            border-radius: 2px;
+            transition: all 0.22s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(240,232,220,0.35);
+            background: rgba(240,232,220,0.04);
+        }
+
+        /* ============================================
+           SECTION SHARED
+        ============================================ */
+        section { padding: 7rem 3rem; }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent-sage);
+            white-space: nowrap;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            color: var(--text-light);
+            line-height: 1.1;
+        }
+
+        .section-divider {
+            flex: 1;
+            height: 1px;
+            background: var(--border-light);
+            min-width: 2rem;
+        }
+
+        /* ============================================
+           RESEARCH
+        ============================================ */
+        .research { background: var(--bg-mid); }
+
+        .research-intro {
+            max-width: 660px;
+            margin-bottom: 3.5rem;
+        }
+
+        .research-intro p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.85;
+        }
+
+        .research-intro strong {
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+        }
+
+        .research-card {
+            background: rgba(240,232,220,0.04);
+            border: 1px solid var(--border-light);
+            padding: 2rem;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .research-card:hover {
+            background: rgba(240,232,220,0.07);
+            border-color: rgba(240,232,220,0.2);
+            transform: translateY(-2px);
+        }
+
+        .research-card-num {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            color: var(--accent-sage);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .research-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-weight: 400;
+            color: var(--text-light);
+            margin-bottom: 0.65rem;
+        }
+
+        .research-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.72;
+        }
+
+        /* ============================================
+           CASE STUDIES — paper card signature element
+        ============================================ */
+        .case-studies-inner { max-width: 1200px; margin: 0 auto; }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* THE SIGNATURE: paper cards lifted off dark background */
+        .project-card {
+            background: var(--paper);
+            color: var(--ink);
+            padding: 2.5rem;
+            border-radius: 3px;
+            box-shadow: var(--shadow-paper);
+            transition: all 0.32s ease;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--accent-sage);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.32s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .project-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .project-card.featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .project-card.featured .project-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-type {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent-bronze);
+        }
+
+        .project-year {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            color: var(--ink-muted);
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+            font-weight: 400;
+            color: var(--ink);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--accent-bronze);
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            font-size: 0.88rem;
+            color: var(--ink-muted);
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .project-tag {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.28rem 0.65rem;
+            background: rgba(28,36,50,0.08);
+            color: var(--ink-muted);
+            border-radius: 2px;
+        }
+
+        /* ============================================
+           NARRATIVE DESIGN
+        ============================================ */
+        .narrative { background: var(--bg-mid); }
+
+        .narrative-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .narrative-text p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.85;
+            margin-bottom: 1.1rem;
+        }
+
+        .narrative-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .narrative-item {
+            padding: 1.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 3px;
+            transition: all 0.25s ease;
+        }
+
+        .narrative-item:hover {
+            border-color: rgba(240,232,220,0.24);
+            background: rgba(240,232,220,0.03);
+        }
+
+        .narrative-item h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-light);
+            margin-bottom: 0.45rem;
+        }
+
+        .narrative-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ============================================
+           ABOUT
+        ============================================ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 5rem;
+            align-items: start;
+            max-width: 1000px;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.88;
+            margin-bottom: 1.2rem;
+        }
+
+        .about-text strong {
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .about-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .detail-block h4 {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent-sage);
+            margin-bottom: 0.75rem;
+        }
+
+        .detail-block ul {
+            list-style: none;
+        }
+
+        .detail-block ul li {
+            font-size: 0.87rem;
+            color: var(--text-muted);
+            padding: 0.32rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .detail-block ul li:last-child { border-bottom: none; }
+
+        /* ============================================
+           CONTACT
+        ============================================ */
+        .contact {
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        .contact .section-title { color: var(--ink); }
+        .contact .section-label { color: var(--accent-bronze); }
+        .contact .section-divider { background: rgba(28,36,50,0.12); }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .contact-text p {
+            font-size: 1.05rem;
+            color: var(--ink-muted);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .btn-dark {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            background: var(--ink);
+            color: var(--paper);
+            text-decoration: none;
+            font-size: 0.83rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            border-radius: 2px;
+            transition: all 0.22s ease;
+        }
+
+        .btn-dark:hover {
+            background: #2C3A47;
+            transform: translateY(-2px);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid rgba(28,36,50,0.14);
+            border-radius: 3px;
+            text-decoration: none;
+            color: var(--ink);
+            transition: all 0.22s ease;
+        }
+
+        .contact-link:hover {
+            border-color: var(--ink);
+            background: rgba(28,36,50,0.04);
+            transform: translateX(4px);
+        }
+
+        .cl-label {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            flex: 1;
+        }
+
+        .cl-value {
+            font-size: 0.88rem;
+            color: var(--ink);
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        footer {
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-light);
+        }
+
+        footer p {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           SCROLL REVEAL
+        ============================================ */
+        @media (prefers-reduced-motion: no-preference) {
+            .reveal {
+                opacity: 0;
+                transform: translateY(18px);
+                transition: opacity 0.55s ease, transform 0.55s ease;
+            }
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 900px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            section { padding: 5rem 1.5rem; }
+            .hero { padding: 7rem 1.5rem 4rem; }
+
+            .research-grid,
+            .projects-grid,
+            .narrative-grid,
+            .about-grid,
+            .contact-grid { grid-template-columns: 1fr; }
+
+            .project-card.featured {
+                grid-column: 1;
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="nav-logo">Ana Qin</a>
+        <ul class="nav-links">
+            <li><a href="#research">Research</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#narrative">Narrative</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <p class="hero-eyebrow">HCI Researcher &nbsp;·&nbsp; Narrative Designer &nbsp;·&nbsp; Affective Systems</p>
+        <h1 class="hero-name">Ana<br><em>Qin</em></h1>
+        <p class="hero-thesis">
+            I design interactive systems that hold space for difficult human experiences —
+            building games, tools, and research at the intersection of behavioral science,
+            affective design, and narrative architecture.
+        </p>
+        <div class="hero-tags">
+            <span class="tag">Trauma-Informed Design</span>
+            <span class="tag">Serious Games</span>
+            <span class="tag">Affective UX</span>
+            <span class="tag">Behavioral Scaffolding</span>
+            <span class="tag">Narrative Systems</span>
+        </div>
+        <div class="hero-cta">
+            <a href="#work" class="btn-primary">View Work →</a>
+            <a href="#contact" class="btn-secondary">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="research" id="research">
+        <div class="section-header">
+            <span class="section-label">Research</span>
+            <h2 class="section-title">The Work Beneath the Work</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="research-intro">
+            <p>
+                My research lives at the intersection of <strong>human-computer interaction,
+                behavioral science, and affective design</strong>. I study how interactive systems
+                can hold space for people navigating high-stakes emotional content — not by
+                simplifying the experience, but by building scaffolding that meets users
+                where they actually are.
+            </p>
+        </div>
+
+        <div class="research-grid">
+            <div class="research-card reveal">
+                <div class="research-card-num">01 — Focus</div>
+                <h3>Affective Design</h3>
+                <p>Designing systems that actively account for emotional state —
+                building feedback loops, pacing, and interaction models around the
+                felt experience of the user, not just their task completion.</p>
+            </div>
+            <div class="research-card reveal">
+                <div class="research-card-num">02 — Focus</div>
+                <h3>Trauma-Informed Mechanics</h3>
+                <p>Translating trauma research into interactive design language —
+                creating systems that support regulation, not overwhelm, for users
+                navigating difficult or high-stakes content.</p>
+            </div>
+            <div class="research-card reveal">
+                <div class="research-card-num">03 — Focus</div>
+                <h3>Behavioral Scaffolding</h3>
+                <p>Applying Self-Determination Theory and cognitive load frameworks
+                to design systems that actively support motivation and reduce friction
+                at the precise moment of action.</p>
+            </div>
+            <div class="research-card reveal">
+                <div class="research-card-num">04 — Focus</div>
+                <h3>Narrative as Intervention</h3>
+                <p>Using interactive narrative architecture to shift attitudes, build
+                empathy, and support emotional reframing in serious game and educational
+                contexts where story structure is the design.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section id="work">
+        <div class="section-header">
+            <span class="section-label">Case Studies</span>
+            <h2 class="section-title">Selected Work</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="case-studies-inner">
+            <div class="projects-grid">
+
+                <!-- Another Day — Featured -->
+                <a href="#" class="project-card featured reveal">
+                    <div>
+                        <div class="project-meta">
+                            <span class="project-type">Serious Game · In Development</span>
+                            <span class="project-year">2024–Present</span>
+                        </div>
+                        <h3 class="project-title">Another Day</h3>
+                        <p class="project-subtitle">A papercraft serious game designed to simulate, navigate, and ground CPTSD behavioral loops.</p>
+                        <p class="project-desc">
+                            An experimental serious game translating the phenomenology of CPTSD into
+                            interactive mechanics — a shifting maze-house structure mirrors emotional
+                            dysregulation; shadow systems externalize intrusive thought patterns;
+                            a layered papercraft aesthetic holds the tension between fragility and depth.
+                            Players don't just observe trauma response — they navigate it.
+                        </p>
+                    </div>
+                    <div class="project-right">
+                        <div class="project-tags">
+                            <span class="project-tag">Trauma-Informed Design</span>
+                            <span class="project-tag">Environmental Storytelling</span>
+                            <span class="project-tag">Affective Mechanics</span>
+                            <span class="project-tag">Narrative Architecture</span>
+                            <span class="project-tag">Horror/Atmospheric</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- SpellStep -->
+                <a href="#" class="project-card reveal">
+                    <div class="project-meta">
+                        <span class="project-type">UX Research · Tool Design</span>
+                        <span class="project-year">2023</span>
+                    </div>
+                    <h3 class="project-title">SpellStep</h3>
+                    <p class="project-subtitle">Task initiation scaffolding for neurodivergent users.</p>
+                    <p class="project-desc">
+                        A digital task-initiation tool built on Self-Determination Theory,
+                        using an AI companion to scaffold motivation and reduce behavioral
+                        friction for users with ADHD and executive function challenges.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">SDT Framework</span>
+                        <span class="project-tag">Neurodivergent UX</span>
+                        <span class="project-tag">AI Companion</span>
+                        <span class="project-tag">Behavioral Science</span>
+                    </div>
+                </a>
+
+                <!-- Space Odyssey -->
+                <a href="#" class="project-card reveal">
+                    <div class="project-meta">
+                        <span class="project-type">Serious Game · Client Work</span>
+                        <span class="project-year">2023</span>
+                    </div>
+                    <h3 class="project-title">Space Odyssey</h3>
+                    <p class="project-subtitle">Narrative game for the Chicago Refugee Coalition.</p>
+                    <p class="project-desc">
+                        A narrative digital game developed with the Chicago Refugee Coalition
+                        to actively teach and evoke deep empathy toward displaced populations —
+                        demoed at the CRC Annual Gala and featured by DePaul's
+                        College of Computing & Digital Media.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Empathy Design</span>
+                        <span class="project-tag">Client Collaboration</span>
+                        <span class="project-tag">Narrative UX</span>
+                        <span class="project-tag">Social Impact</span>
+                    </div>
+                </a>
+
+                <!-- Redress -->
+                <a href="#" class="project-card reveal">
+                    <div class="project-meta">
+                        <span class="project-type">Interactive Narrative · RA Research</span>
+                        <span class="project-year">2023</span>
+                    </div>
+                    <h3 class="project-title">Redress</h3>
+                    <p class="project-subtitle">Historical trauma through interactive narrative.</p>
+                    <p class="project-desc">
+                        An interactive historical narrative developed with the UCSC History
+                        Department during RA work at DePaul — exploring how interactive systems
+                        can make historical trauma emotionally present without being exploitative,
+                        using structural scaffolding to hold difficult content.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Historical Narrative</span>
+                        <span class="project-tag">Twine Systems</span>
+                        <span class="project-tag">RA Research</span>
+                        <span class="project-tag">Affective Design</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NARRATIVE DESIGN -->
+    <section class="narrative" id="narrative">
+        <div class="section-header">
+            <span class="section-label">Narrative Design</span>
+            <h2 class="section-title">Stories as Systems</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="narrative-grid">
+            <div class="narrative-text">
+                <p>
+                    I write literature disguised as game lore. Narrative design, for me,
+                    isn't decoration layered over mechanics — it's the structural logic
+                    that makes a system emotionally legible to the person inside it.
+                </p>
+                <p>
+                    My narrative work operates at the level of architecture: how does
+                    the shape of a story teach a player what kind of world they're in?
+                    How does a room's layout communicate psychological state? How does
+                    pacing function as emotional scaffolding?
+                </p>
+                <p>
+                    I bring the same rigor to narrative that I bring to UX research —
+                    because a story that doesn't land with a user has failed as design,
+                    not just as art.
+                </p>
+            </div>
+            <div class="narrative-items">
+                <div class="narrative-item reveal">
+                    <h4>Boom! Haunted</h4>
+                    <p>Comedy horror — art direction, narrative systems, and 3D modeling.
+                    An exploration of how humor and dread share structural DNA.</p>
+                </div>
+                <div class="narrative-item reveal">
+                    <h4>Konect & Collab</h4>
+                    <p>Organizational writing, constitutions, and community governance design.
+                    Narrative as infrastructure.</p>
+                </div>
+                <div class="narrative-item reveal">
+                    <h4>Academic Writing</h4>
+                    <p>Research presentations, HCI papers, and walkthroughs — making
+                    complex affective systems legible to academic and professional audiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-header">
+            <span class="section-label">About</span>
+            <h2 class="section-title">Who I Am</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    I'm an HCI researcher and narrative designer with an M.S. in
+                    Human-Computer Interaction from DePaul University, where my work
+                    focused on <strong>affective design, trauma-informed mechanics,
+                    and behavioral scaffolding</strong> in interactive systems.
+                </p>
+                <p>
+                    My background sits at an unusual intersection: I think like a researcher,
+                    design like a narrative architect, and build like someone who genuinely
+                    believes interactive systems can change how people understand themselves
+                    and each other.
+                </p>
+                <p>
+                    I'm drawn to the places where human emotional experience and interactive
+                    technology get complicated — high-stakes content, neurodivergent users,
+                    trauma histories, displaced populations. The places where getting the
+                    design wrong has real consequences.
+                </p>
+            </div>
+            <div class="about-details">
+                <div class="detail-block">
+                    <h4>Education</h4>
+                    <ul>
+                        <li>M.S. Human-Computer Interaction — DePaul University</li>
+                        <li>GPA: 3.83 / 4.0</li>
+                    </ul>
+                </div>
+                <div class="detail-block">
+                    <h4>Expertise</h4>
+                    <ul>
+                        <li>Affective Design & Behavioral Science</li>
+                        <li>Trauma-Informed UX Research</li>
+                        <li>Serious Games & Narrative Systems</li>
+                        <li>Interactive Narrative Architecture</li>
+                        <li>UX Research & User Testing</li>
+                    </ul>
+                </div>
+                <div class="detail-block">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li>Figma · Unity · Twine</li>
+                        <li>HTML / CSS / JavaScript</li>
+                        <li>Blender · Notion</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <span class="section-label">Contact</span>
+            <h2 class="section-title">Let's Work Together</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-text">
+                <p>
+                    I'm currently open to research specialist roles, lab manager positions,
+                    and studio opportunities in game UX and narrative design — particularly
+                    with teams working at the intersection of interactive systems and
+                    meaningful human experience.
+                </p>
+                <a href="mailto:[your@email.com]" class="btn-dark">Send an Email →</a>
+            </div>
+            <div class="contact-links">
+                <a href="[YOUR NOTION LINK]" class="contact-link">
+                    <span class="cl-label">Portfolio</span>
+                    <span class="cl-value">Notion Portfolio →</span>
+                </a>
+                <a href="[YOUR LINKEDIN]" class="contact-link">
+                    <span class="cl-label">LinkedIn</span>
+                    <span class="cl-value">linkedin.com/in/anaqin →</span>
+                </a>
+                <a href="https://github.com/afreensa94" class="contact-link">
+                    <span class="cl-label">GitHub</span>
+                    <span class="cl-value">afreensa94 →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Ana Qin — Designed & Built with Intent</p>
+        <p>HCI · Narrative Design · Affective Systems</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('visible');
+            });
+        }, { threshold: 0.08 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
