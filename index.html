@@ -1199,8 +1199,11 @@
                 slide.style.zIndex = numSlides - i;
 
                 if (scrolled < cardStart) {
-                    // Not yet reached — card sits centered, waiting underneath
-                    slide.style.transform = 'translate(-50%, -50%)';
+                    // Not yet reached — stacked behind with slight offset to peek out
+                    const depth = i - Math.max(0, Math.floor(scrolled / segmentHeight));
+                    const offsetY = depth * 6;
+                    const offsetX = depth * 3;
+                    slide.style.transform = 'translate(calc(-50% + ' + offsetX + 'px), calc(-50% + ' + offsetY + 'px))';
                     slide.style.opacity = '1';
                     slide.style.pointerEvents = 'none';
                 } else if (scrolled >= cardStart && scrolled < cardEnd) {
