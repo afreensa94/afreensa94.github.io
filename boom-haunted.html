@@ -49,7 +49,10 @@
         .team-card p { font-size: 0.85rem; margin-bottom: 0; }
         footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); }
         footer p { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--text-muted); }
-        @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; } .case-meta { gap: 1.2rem; } .team-grid { grid-template-columns: 1fr; } }
+        .process-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+        .process-grid img { width: 100%; border-radius: 3px; border: 1px solid var(--border-light); aspect-ratio: 1; object-fit: cover; }
+        .process-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-sage); margin-top: 0.5rem; display: block; }
+        @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; } .case-meta { gap: 1.2rem; } .team-grid { grid-template-columns: 1fr; } .process-grid { grid-template-columns: 1fr 1fr; } }
     </style>
 </head>
 <body>
@@ -112,6 +115,61 @@
             <li><strong>Narrative:</strong> Co-wrote dialogues, character voice, and comedic tone</li>
             <li><strong>Voice Acting:</strong> Performed voice work for the game</li>
         </ul>
+    </section>
+
+    <section class="case-section alt">
+        <div class="case-section-inner">
+            <h2>3D Character Modeling Process</h2>
+            <p>Timmy's character model — built from scratch in Blender, progressing from reference sketch to final low-poly model.</p>
+
+            <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-bottom: 0.5rem;">Early Exploration</h3>
+            <div class="process-grid">
+                <div>
+                    <img src="images/timmy-01-head-sketch.jpeg" alt="Head sculpt on reference sketch">
+                    <span class="process-label">Reference + Head Sculpt</span>
+                </div>
+                <div>
+                    <img src="images/timmy-02-head-sculpt.jpeg" alt="Head topology close-up">
+                    <span class="process-label">Head Topology</span>
+                </div>
+                <div>
+                    <img src="images/timmy-03-blockout.jpeg" alt="Early blockout wireframe">
+                    <span class="process-label">Body Blockout</span>
+                </div>
+            </div>
+
+            <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-top: 2rem; margin-bottom: 0.5rem;">Refinement</h3>
+            <div class="process-grid">
+                <div>
+                    <img src="images/timmy-04-wireframe.jpeg" alt="Full body wireframe">
+                    <span class="process-label">Wireframe Detail</span>
+                </div>
+                <div>
+                    <img src="images/timmy-05-tpose.jpeg" alt="T-pose full body">
+                    <span class="process-label">T-Pose Model</span>
+                </div>
+                <div>
+                    <img src="images/timmy-06-wireframe-torso.jpeg" alt="Torso wireframe detail">
+                    <span class="process-label">Torso Topology</span>
+                </div>
+            </div>
+
+            <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-top: 2rem; margin-bottom: 0.5rem;">Final Model</h3>
+            <div class="process-grid">
+                <div>
+                    <img src="images/timmy-07-hair-closeup.jpeg" alt="Hair sculpt close-up">
+                    <span class="process-label">Hair Sculpt</span>
+                </div>
+                <div>
+                    <img src="images/timmy-09-final-white.jpeg" alt="Final model white">
+                    <span class="process-label">Final — Unshaded</span>
+                </div>
+                <div>
+                    <img src="images/timmy-10-final-color.jpeg" alt="Final model with color">
+                    <span class="process-label">Final — With Color</span>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="case-section alt">
