@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpellStep — Narrative Design | Sana Afreen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #1C2432; --bg-mid: #232D3F; --paper: #F0E8DC; --paper-warm: #EDE0CF;
+            --ink: #1C2432; --ink-muted: #4A5568; --text-light: #F0E8DC; --text-muted: #9AAEC1;
+            --accent-sage: #7A9B6F; --accent-bronze: #B8845A;
+            --border-light: rgba(240,232,220,0.10);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+            --font-mono: 'DM Mono', monospace;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-deep); color: var(--text-light); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(28,36,50,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border-light); }
+        .nav-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 300; letter-spacing: 0.06em; color: var(--text-light); text-decoration: none; }
+        .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s; }
+        .nav-back:hover { color: var(--text-light); }
+        .case-hero { padding: 10rem 3rem 4rem; max-width: 900px; }
+        .case-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-sage); margin-bottom: 1.5rem; }
+        .case-title { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 0.95; color: var(--text-light); margin-bottom: 1.5rem; }
+        .case-subtitle { font-family: var(--font-display); font-size: 1.15rem; font-style: italic; color: var(--accent-bronze); margin-bottom: 2rem; }
+        .case-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; }
+        .meta-item { display: flex; flex-direction: column; gap: 0.3rem; }
+        .meta-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-sage); }
+        .meta-value { font-size: 0.9rem; color: var(--text-muted); }
+        .case-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.38rem 0.9rem; border: 1px solid var(--border-light); color: var(--text-muted); border-radius: 2px; }
+        .case-section { padding: 4rem 3rem; max-width: 900px; }
+        .case-section.alt { background: var(--bg-mid); max-width: 100%; }
+        .case-section.alt .case-section-inner { max-width: 900px; }
+        .case-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--text-light); margin-bottom: 1.5rem; }
+        .case-section h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-bottom: 0.5rem; margin-top: 2rem; }
+        .case-section h3:first-of-type { margin-top: 0; }
+        .case-section p { font-size: 1rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.2rem; }
+        .case-section strong { color: var(--text-light); font-weight: 400; }
+        .case-section ul { list-style: none; padding: 0; }
+        .case-section ul li { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; padding: 0.4rem 0; padding-left: 1.2rem; position: relative; }
+        .case-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent-sage); }
+        .crosslink { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; background: var(--paper); color: var(--ink); text-decoration: none; font-size: 0.83rem; font-weight: 500; letter-spacing: 0.04em; border-radius: 2px; transition: all 0.22s ease; margin-top: 1rem; }
+        .crosslink:hover { background: var(--paper-warm); transform: translateY(-2px); }
+        footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); }
+        footer p { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--text-muted); }
+        @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; } .case-meta { gap: 1.2rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">Sana Afreen</a>
+        <a href="index.html#narrative" class="nav-back">← Back to Narrative</a>
+    </nav>
+
+    <section class="case-hero">
+        <p class="case-eyebrow">Narrative Design Case Study</p>
+        <h1 class="case-title">SpellStep</h1>
+        <p class="case-subtitle">Story-first productivity — narrative systems as emotional scaffolding.</p>
+        <div class="case-meta">
+            <div class="meta-item">
+                <span class="meta-label">Role</span>
+                <span class="meta-value">Lead UX Researcher & Designer</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Platform</span>
+                <span class="meta-value">Figma Prototype</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Type</span>
+                <span class="meta-value">Gamified Task Management App</span>
+            </div>
+        </div>
+        <div class="case-tags">
+            <span class="tag">Narrative Design</span>
+            <span class="tag">UX Writing</span>
+            <span class="tag">Companion Systems</span>
+            <span class="tag">Emotional Scaffolding</span>
+        </div>
+    </section>
+
+    <section class="case-section alt">
+        <div class="case-section-inner">
+            <h2>The Narrative Problem</h2>
+            <p>
+                Traditional productivity apps treat tasks as data — items to check off, streaks to maintain,
+                metrics to optimize. For neurodivergent users, this framing creates <strong>emotional friction</strong>:
+                missed streaks become shame, long lists become overwhelm, and the app becomes another thing they're failing at.
+            </p>
+            <p>
+                SpellStep's narrative challenge was to design a system where <strong>story replaces punishment</strong> —
+                where progress feels like discovery, not obligation.
+            </p>
+        </div>
+    </section>
+
+    <section class="case-section">
+        <h2>Narrative Architecture</h2>
+        <p>
+            The core narrative conceit: <strong>your tasks are quests, and your world responds to you.</strong>
+            This isn't a skin — it's a structural decision that shapes every interaction.
+        </p>
+
+        <h3>Companion Voice Design</h3>
+        <p>
+            The AI companion speaks with affirmation, not pressure. Its voice was designed to feel like
+            a kind friend, not a productivity coach. Key writing rules:
+        </p>
+        <ul>
+            <li>Never guilt the user for inactivity — acknowledge the return instead</li>
+            <li>Frame incomplete tasks as paused journeys, not failures</li>
+            <li>Use "world reactions" (soft glows, environmental shifts) instead of red warnings</li>
+            <li>Match energy level — low-energy states get gentler, shorter prompts</li>
+        </ul>
+    </section>
+
+    <section class="case-section alt">
+        <div class="case-section-inner">
+            <h2>Story-Based Streaks</h2>
+            <p>
+                Traditional streaks punish absence. SpellStep's streaks are <strong>narrative continuity</strong> —
+                consecutive engagement unlocks new chapters, character dialogue, and world details. Missing a day
+                doesn't break anything; it pauses the story. The world waits for you.
+            </p>
+            <p>
+                This reframes the motivation loop: players return not because they'll lose progress,
+                but because <strong>they're curious what happens next</strong>.
+            </p>
+        </div>
+    </section>
+
+    <section class="case-section">
+        <h2>Narrative Progress Map</h2>
+        <p>
+            Each completed task doesn't just increment a counter — it reveals a piece of the story world.
+            The progress map is a <strong>visual narrative</strong>, not a chart. Users see their journey
+            as a landscape unfolding, with each task adding texture, color, or story fragments.
+        </p>
+        <ul>
+            <li>Reflects emotional journey, not just productivity</li>
+            <li>Encourages return through curiosity rather than obligation</li>
+            <li>Low-energy tasks reveal smaller details; ambitious tasks unlock larger story beats</li>
+        </ul>
+    </section>
+
+    <section class="case-section alt">
+        <div class="case-section-inner">
+            <h2>Writing Principles</h2>
+            <ul>
+                <li><strong>Kindness over accountability</strong> — The system never asks "why didn't you?"</li>
+                <li><strong>Curiosity over obligation</strong> — "Something new appeared in your world" beats "You have 3 tasks due"</li>
+                <li><strong>Adaptability over consistency</strong> — Voice shifts with user energy; high days get excitement, low days get warmth</li>
+                <li><strong>Dignity over infantilization</strong> — Supportive without being patronizing; the user is the hero, not the patient</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="case-section">
+        <h2>Key Learnings</h2>
+        <ul>
+            <li><strong>Narrative framing changes behavior</strong> — Reframing "task list" as "quest log" measurably reduced reported overwhelm in playtests</li>
+            <li><strong>Voice design is UX design</strong> — The companion's tone is as much a design decision as button placement</li>
+            <li><strong>Absence should be graceful</strong> — Systems that punish absence lose the users who need them most</li>
+            <li><strong>Story creates voluntary engagement</strong> — Narrative attachment drives return rates more effectively than gamification mechanics</li>
+        </ul>
+        <a href="spellstep.html" class="crosslink">View Full UX Case Study →</a>
+    </section>
+
+    <footer>
+        <p>© 2026 Sana Afreen — Designed & Built with Intent</p>
+        <p>HCI · Narrative Design · Affective Systems</p>
+    </footer>
+</body>
+</html>

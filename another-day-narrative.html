@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Another Day — Narrative Design | Sana Afreen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #1C2432; --bg-mid: #232D3F; --paper: #F0E8DC; --paper-warm: #EDE0CF;
+            --ink: #1C2432; --ink-muted: #4A5568; --text-light: #F0E8DC; --text-muted: #9AAEC1;
+            --accent-sage: #7A9B6F; --accent-bronze: #B8845A;
+            --border-light: rgba(240,232,220,0.10);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+            --font-mono: 'DM Mono', monospace;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-deep); color: var(--text-light); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(28,36,50,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border-light); }
+        .nav-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 300; letter-spacing: 0.06em; color: var(--text-light); text-decoration: none; }
+        .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s; }
+        .nav-back:hover { color: var(--text-light); }
+        .coming-soon {
+            min-height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            padding: 2rem;
+        }
+        .coming-soon .case-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-sage); margin-bottom: 1.5rem; }
+        .coming-soon h1 { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 0.95; color: var(--text-light); margin-bottom: 1.5rem; }
+        .coming-soon .subtitle { font-family: var(--font-display); font-size: 1.15rem; font-style: italic; color: var(--accent-bronze); margin-bottom: 2rem; max-width: 550px; }
+        .coming-soon p { font-size: 1rem; color: var(--text-muted); line-height: 1.85; max-width: 500px; margin-bottom: 2rem; }
+        .coming-soon strong { color: var(--text-light); font-weight: 400; }
+        .crosslink { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border: 1px solid var(--border-light); color: var(--text-light); text-decoration: none; font-size: 0.83rem; letter-spacing: 0.04em; border-radius: 2px; transition: all 0.22s ease; }
+        .crosslink:hover { border-color: rgba(240,232,220,0.35); background: rgba(240,232,220,0.04); }
+        footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); }
+        footer p { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--text-muted); }
+        @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">Sana Afreen</a>
+        <a href="index.html#narrative" class="nav-back">← Back to Narrative</a>
+    </nav>
+
+    <section class="coming-soon">
+        <p class="case-eyebrow">Narrative Design Case Study</p>
+        <h1>Another Day</h1>
+        <p class="subtitle">A papercraft narrative translating CPTSD into interactive mechanics.</p>
+        <p>
+            This narrative design case study is currently being written. The story explores how
+            <strong>environmental storytelling, metaphor-as-mechanic, and emotional resolution</strong>
+            can make invisible psychological experiences visible and navigable.
+        </p>
+        <a href="another-day.html" class="crosslink">View UX Case Study →</a>
+    </section>
+
+    <footer>
+        <p>© 2026 Sana Afreen — Designed & Built with Intent</p>
+        <p>HCI · Narrative Design · Affective Systems</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Odyssey — Narrative Design | Sana Afreen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #1C2432; --bg-mid: #232D3F; --paper: #F0E8DC; --paper-warm: #EDE0CF;
+            --ink: #1C2432; --ink-muted: #4A5568; --text-light: #F0E8DC; --text-muted: #9AAEC1;
+            --accent-sage: #7A9B6F; --accent-bronze: #B8845A;
+            --border-light: rgba(240,232,220,0.10);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+            --font-mono: 'DM Mono', monospace;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-deep); color: var(--text-light); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(28,36,50,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border-light); }
+        .nav-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 300; letter-spacing: 0.06em; color: var(--text-light); text-decoration: none; }
+        .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s; }
+        .nav-back:hover { color: var(--text-light); }
+        .case-hero { padding: 10rem 3rem 4rem; max-width: 900px; }
+        .case-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-sage); margin-bottom: 1.5rem; }
+        .case-title { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 0.95; color: var(--text-light); margin-bottom: 1.5rem; }
+        .case-subtitle { font-family: var(--font-display); font-size: 1.15rem; font-style: italic; color: var(--accent-bronze); margin-bottom: 2rem; }
+        .case-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; }
+        .meta-item { display: flex; flex-direction: column; gap: 0.3rem; }
+        .meta-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-sage); }
+        .meta-value { font-size: 0.9rem; color: var(--text-muted); }
+        .case-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.38rem 0.9rem; border: 1px solid var(--border-light); color: var(--text-muted); border-radius: 2px; }
+        .case-section { padding: 4rem 3rem; max-width: 900px; }
+        .case-section.alt { background: var(--bg-mid); max-width: 100%; }
+        .case-section.alt .case-section-inner { max-width: 900px; }
+        .case-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--text-light); margin-bottom: 1.5rem; }
+        .case-section h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-bottom: 0.5rem; margin-top: 2rem; }
+        .case-section h3:first-of-type { margin-top: 0; }
+        .case-section p { font-size: 1rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.2rem; }
+        .case-section strong { color: var(--text-light); font-weight: 400; }
+        .case-section ul { list-style: none; padding: 0; }
+        .case-section ul li { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; padding: 0.4rem 0; padding-left: 1.2rem; position: relative; }
+        .case-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent-sage); }
+        .char-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+        .char-card { padding: 1.5rem; border: 1px solid var(--border-light); border-radius: 3px; }
+        .char-card h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; color: var(--text-light); margin-bottom: 0.5rem; }
+        .char-card p { font-size: 0.85rem; margin-bottom: 0; }
+        .crosslink { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; background: var(--paper); color: var(--ink); text-decoration: none; font-size: 0.83rem; font-weight: 500; letter-spacing: 0.04em; border-radius: 2px; transition: all 0.22s ease; margin-top: 1rem; }
+        .crosslink:hover { background: var(--paper-warm); transform: translateY(-2px); }
+        footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); }
+        footer p { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--text-muted); }
+        @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; } .char-grid { grid-template-columns: 1fr; } .case-meta { gap: 1.2rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">Sana Afreen</a>
+        <a href="index.html#narrative" class="nav-back">← Back to Narrative</a>
+    </nav>
+
+    <section class="case-hero">
+        <p class="case-eyebrow">Narrative Design Case Study</p>
+        <h1 class="case-title">Space Odyssey</h1>
+        <p class="case-subtitle">Visual novel narrative design & UX writing for an interactive refugee story.</p>
+        <div class="case-meta">
+            <div class="meta-item">
+                <span class="meta-label">Role</span>
+                <span class="meta-value">Lead Researcher · Narrative Designer · UX/UI Designer</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Platform</span>
+                <span class="meta-value">Figma</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Timeline</span>
+                <span class="meta-value">Semester-long academic project</span>
+            </div>
+        </div>
+        <div class="case-tags">
+            <span class="tag">Narrative Design</span>
+            <span class="tag">UX Writing</span>
+            <span class="tag">Branching Narrative</span>
+            <span class="tag">Character Design</span>
+            <span class="tag">Playtesting</span>
+        </div>
+    </section>
+
+    <section class="case-section alt">
+        <div class="case-section-inner">
+            <h2>Overview</h2>
+            <p>
+                Space Odyssey is an interactive visual novel exploring <strong>identity, displacement, and survival</strong>
+                through a branching sci-fi narrative. Players navigate a war-torn galaxy as a customizable protagonist
+                making choices that shape relationships, moral standing, and story outcomes across three chapters.
+            </p>
+        </div>
+    </section>
+
+    <section class="case-section">
+        <h2>The Challenge</h2>
+        <p>
+            Create a branching narrative system where player choices feel <strong>meaningful</strong>,
+            character voice remains consistent across divergent paths, and moral complexity drives
+            emotional engagement without relying on binary good/evil mechanics.
+        </p>
+        <p>Initial playtesting revealed critical issues:</p>
+        <ul>
+            <li>Story lacked character depth and worldbuilding</li>
+            <li>Choices felt flat and emotionally unimpactful</li>
+            <li>Players could "call the bluff" — recognizing that narrative stakes weren't real</li>
+        </ul>
+    </section>
+
+    <section class="case-section alt">
+        <div class="case-section-inner">
+            <h2>Research & Approach</h2>
+            <p>
+                I grounded the narrative redesign in the <strong>Narrative Taxonomy of Choices</strong>,
+                focusing on creating moral tension even when choices were structurally constrained. The goal
+                was to make "fake" choices feel emotionally real by embedding them in character relationships
+                and worldbuilding consequences.
+            </p>
+            <p>
+                <strong>Key Design Principle:</strong> Illusion of agency matters as much as actual branching.
+                If players believe their choices reflect their values, the narrative succeeds — even if paths
+                converge later.
+            </p>
+        </div>
+    </section>
+
+    <section class="case-section">
+        <h2>Narrative Iteration Process</h2>
+
+        <h3>First Iteration</h3>
+        <ul>
+            <li>Initial story lacked character depth and worldbuilding</li>
+            <li>Choices felt flat — emotionally unimpactful and low-stakes</li>
+            <li>Playtest feedback: narrative didn't resonate; players weren't invested</li>
+        </ul>
+
+        <h3>Second Iteration</h3>
+        <ul>
+            <li>Applied Narrative Taxonomy of Choices to restructure player decisions</li>
+            <li>Planted moral tension in every choice point</li>
+            <li>Result: Playtesters immediately identified weak narrative illusion — this insight drove the final rewrite</li>
+        </ul>
+
+        <h3>Third Iteration</h3>
+        <ul>
+            <li>Introduced sub-narratives branching off each major decision</li>
+            <li>Side threads funneled back into the main plot, preserving narrative cohesion</li>
+            <li>Strengthened illusion of agency while keeping emotional arcs tight and intentional</li>
+        </ul>
+    </section>
+
+    <section class="case-section alt">
+        <div class="case-section-inner">
+            <h2>Character Design & Voice</h2>
+            <p>I developed three main characters with distinct voices, backstories, and emotional arcs:</p>
+            <div class="char-grid">
+                <div class="char-card">
+                    <h4>Zaira Morvayne</h4>
+                    <p>Age 39 · Doctor · Herbalist. Intellectual, sharp, emotionally guarded. Witty and prone to pessimism. The family's anchor — stubborn, brilliant, disorganized.</p>
+                </div>
+                <div class="char-card">
+                    <h4>Sorin Morvayne</h4>
+                    <p>Age 44 · Skymarshal. Direct, commanding, duty-driven. Carries the weight of every soldier he's lost. Buries his soft heart under armor and discipline.</p>
+                </div>
+                <div class="char-card">
+                    <h4>Orius Morvayne</h4>
+                    <p>Age 17. Uses humor to deflect pain, seeks his father's approval but never gets it. Soft heart hidden under sarcasm — the emotional core of the story.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-section">
+        <h2>Narrative Structure</h2>
+        <p>I designed a three-chapter branching system:</p>
+        <ul>
+            <li><strong>Chapter 1 — The War:</strong> Establishes core conflict (war, identity erasure, survival). Players choose to leave or stay after an attack, with sub-branches for each path.</li>
+            <li><strong>Chapter 2 — New World:</strong> Introduces moral ambiguity — refugee status, illegal immigration, seeking asylum. Players navigate bureaucratic and human obstacles.</li>
+            <li><strong>Chapter 3 — Finding Hope:</strong> Escalates consequences based on prior choices. Players find community, isolate, or forge new connections.</li>
+        </ul>
+    </section>
+
+    <section class="case-section alt">
+        <div class="case-section-inner">
+            <h2>Playtesting & Results</h2>
+
+            <h3>After Iteration 2</h3>
+            <ul>
+                <li>Playtesters immediately identified weak points in narrative illusion</li>
+                <li>Feedback shaped the decision to introduce sub-narratives rather than purely linear branching</li>
+            </ul>
+
+            <h3>After Iteration 3</h3>
+            <ul>
+                <li>Players reported stronger emotional investment in character relationships</li>
+                <li>Moral tension made choices feel consequential even when mechanical outcomes were limited</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="case-section">
+        <h2>Key Learnings</h2>
+        <ul>
+            <li><strong>Moral tension > mechanical branching</strong> — Players care more about choices that reflect their values than choices that change the plot</li>
+            <li><strong>Voice consistency across branches is critical</strong> — Character dialogue must feel authentic whether the player is aggressive, diplomatic, or avoidant</li>
+            <li><strong>Iteration based on real feedback > theory</strong> — The Narrative Taxonomy of Choices provided structure, but playtester reactions revealed what actually worked emotionally</li>
+            <li><strong>Sub-narratives preserve agency without sprawl</strong> — Branching paths can funnel back to a main story without feeling "fake" if emotional consequences persist</li>
+        </ul>
+        <a href="space-odyssey.html" class="crosslink">View Full UX Case Study →</a>
+    </section>
+
+    <footer>
+        <p>© 2026 Sana Afreen — Designed & Built with Intent</p>
+        <p>HCI · Narrative Design · Affective Systems</p>
+    </footer>
+</body>
+</html>
