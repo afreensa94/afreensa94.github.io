@@ -340,22 +340,10 @@
             left: 50%;
             width: calc(100% - 6rem);
             max-width: 800px;
-            transform: translate(-50%, 100%) scale(0.95);
+            transform: translate(-50%, -50%);
             opacity: 0;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        opacity 0.45s ease;
             pointer-events: none;
-        }
-
-        .project-slide.active {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .project-slide.above {
-            transform: translate(-50%, -200%) scale(0.95);
-            opacity: 0;
+            will-change: transform, opacity;
         }
 
         /* Grid at the end */
@@ -1187,47 +1175,50 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Pinned card stack — scroll position drives which card is visible
+        // Pinned card stack — scroll position directly drives card transforms
         const spacer = document.getElementById('scroll-spacer');
         const slides = document.querySelectorAll('.project-slide');
         const grid = document.getElementById('projects-grid');
         const numSlides = slides.length;
 
-        // Set spacer height: one viewport per card
         spacer.style.height = (numSlides * 100) + 'vh';
-
-        let lastActive = -1;
 
         function updateCards() {
             const spacerRect = spacer.getBoundingClientRect();
             const scrolled = -spacerRect.top;
             const vh = window.innerHeight;
-            const progress = scrolled / (spacerRect.height - vh);
-            const activeIndex = Math.min(Math.floor(progress * numSlides), numSlides - 1);
+            const segmentHeight = (spacerRect.height - vh) / numSlides;
 
-            if (activeIndex !== lastActive) {
-                slides.forEach((slide, i) => {
-                    slide.classList.remove('active', 'above');
-                    if (i === activeIndex) {
-                        slide.classList.add('active');
-                    } else if (i < activeIndex) {
-                        slide.classList.add('above');
-                    }
-                });
-                lastActive = activeIndex;
-            }
+            slides.forEach((slide, i) => {
+                const cardStart = i * segmentHeight;
+                const cardEnd = (i + 1) * segmentHeight;
+                let t = (scrolled - cardStart) / segmentHeight;
+                t = Math.max(0, Math.min(1, t));
+
+                if (scrolled < cardStart) {
+                    // Below viewport — waiting to enter from bottom
+                    const dist = (cardStart - scrolled) / segmentHeight;
+                    slide.style.transform = 'translate(-50%, calc(-50% + ' + (dist * 120) + '%))';
+                    slide.style.opacity = Math.max(0, 1 - dist);
+                    slide.style.pointerEvents = 'none';
+                } else if (scrolled >= cardStart && scrolled < cardEnd) {
+                    // Active card — centered
+                    const exitProgress = t;
+                    slide.style.transform = 'translate(-50%, calc(-50% - ' + (exitProgress * 120) + '%))';
+                    slide.style.opacity = exitProgress < 0.7 ? 1 : 1 - ((exitProgress - 0.7) / 0.3);
+                    slide.style.pointerEvents = exitProgress < 0.5 ? 'auto' : 'none';
+                } else {
+                    // Above viewport — already scrolled past
+                    slide.style.transform = 'translate(-50%, calc(-50% - 120%))';
+                    slide.style.opacity = 0;
+                    slide.style.pointerEvents = 'none';
+                }
+            });
 
             requestAnimationFrame(updateCards);
         }
 
-        // Start when spacer is near viewport
-        const startObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                requestAnimationFrame(updateCards);
-                startObserver.disconnect();
-            }
-        }, { rootMargin: '200px' });
-        startObserver.observe(spacer);
+        requestAnimationFrame(updateCards);
 
         // Grid fade-in
         const gridObserver = new IntersectionObserver((entries) => {
