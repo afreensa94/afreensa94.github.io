@@ -124,24 +124,140 @@
     </section>
 
     <section class="case-section">
-        <h2>In Progress</h2>
-        <span class="wip-banner">Active Development</span>
+        <h2>The Challenge</h2>
+        <p>
+            Create a branching narrative system where player choices feel <strong>meaningful</strong>,
+            character voice remains consistent across divergent paths, and moral complexity drives
+            emotional engagement without relying on binary good/evil mechanics.
+        </p>
+        <p>Initial playtesting revealed critical issues:</p>
         <ul>
-            <li><strong>Ren'Py build:</strong> Coding in dialogue logic and conditional events</li>
-            <li><strong>Trust system:</strong> Visualizing bias shifts per interaction</li>
-            <li>Finalizing UI styles (color palette, typography, hover states, sound cues)</li>
+            <li>Story lacked character depth and worldbuilding</li>
+            <li>Choices felt flat and emotionally unimpactful</li>
+            <li>Players could "call the bluff" — recognizing that narrative stakes weren't real</li>
         </ul>
     </section>
 
     <section class="case-section alt">
         <div class="case-section-inner">
-            <h2>Impact</h2>
+            <h2>Research & Approach</h2>
             <p>
-                This project pushes the boundaries of what serious narrative games can do when grounded in
-                real-world parallels. While still in development, the systems and worldbuilding work already
-                model how to blend gameplay, UI, and sociopolitical storytelling into a cohesive experience.
+                I grounded the narrative redesign in the <strong>Narrative Taxonomy of Choices</strong>,
+                focusing on creating moral tension even when choices were structurally constrained. The goal
+                was to make "fake" choices feel emotionally real by embedding them in character relationships
+                and worldbuilding consequences.
+            </p>
+            <p>
+                <strong>Key Design Principle:</strong> Illusion of agency matters as much as actual branching.
+                If players believe their choices reflect their values, the narrative succeeds — even if paths
+                converge later.
             </p>
         </div>
+    </section>
+
+    <section class="case-section">
+        <h2>Narrative Iteration Process</h2>
+        <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-bottom: 0.5rem;">First Iteration</h3>
+        <ul>
+            <li>Initial story lacked character depth and worldbuilding</li>
+            <li>Choices felt flat — emotionally unimpactful and low-stakes</li>
+            <li>Playtest feedback: narrative didn't resonate; players weren't invested</li>
+        </ul>
+
+        <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-top: 2rem; margin-bottom: 0.5rem;">Second Iteration</h3>
+        <ul>
+            <li>Applied Narrative Taxonomy of Choices to restructure player decisions</li>
+            <li>Planted moral tension in every choice point</li>
+            <li>Result: Playtesters immediately identified weak narrative illusion — this insight drove the final rewrite</li>
+        </ul>
+
+        <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-top: 2rem; margin-bottom: 0.5rem;">Third Iteration</h3>
+        <ul>
+            <li>Introduced sub-narratives branching off each major decision</li>
+            <li>Side threads funneled back into the main plot, preserving narrative cohesion</li>
+            <li>Strengthened illusion of agency while keeping emotional arcs tight and intentional</li>
+        </ul>
+    </section>
+
+    <section class="case-section alt">
+        <div class="case-section-inner">
+            <h2>Character Design & Voice</h2>
+            <p>
+                I developed three main characters with distinct voices, backstories, and emotional arcs:
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1.5rem;">
+                <div style="padding: 1.5rem; border: 1px solid var(--border-light); border-radius: 3px;">
+                    <h4 style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; color: var(--text-light); margin-bottom: 0.5rem;">Zaira Morvayne</h4>
+                    <p style="font-size: 0.85rem; margin-bottom: 0;">Age 39 · Doctor · Herbalist. Intellectual, sharp, emotionally guarded. Witty and prone to pessimism. The family's anchor — stubborn, brilliant, disorganized.</p>
+                </div>
+                <div style="padding: 1.5rem; border: 1px solid var(--border-light); border-radius: 3px;">
+                    <h4 style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; color: var(--text-light); margin-bottom: 0.5rem;">Sorin Morvayne</h4>
+                    <p style="font-size: 0.85rem; margin-bottom: 0;">Age 44 · Skymarshal. Direct, commanding, duty-driven. Carries the weight of every soldier he's lost. Buries his soft heart under armor and discipline.</p>
+                </div>
+                <div style="padding: 1.5rem; border: 1px solid var(--border-light); border-radius: 3px;">
+                    <h4 style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; color: var(--text-light); margin-bottom: 0.5rem;">Orius Morvayne</h4>
+                    <p style="font-size: 0.85rem; margin-bottom: 0;">Age 17. Uses humor to deflect pain, seeks his father's approval but never gets it. Soft heart hidden under sarcasm — the emotional core of the story.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-section">
+        <h2>Narrative Structure</h2>
+        <p>I designed a three-chapter branching system:</p>
+        <ul>
+            <li><strong>Chapter 1 — The War:</strong> Establishes core conflict (war, identity erasure, survival). Players choose to leave or stay after an attack, with sub-branches for each path.</li>
+            <li><strong>Chapter 2 — New World:</strong> Introduces moral ambiguity — refugee status, illegal immigration, seeking asylum. Players navigate bureaucratic and human obstacles.</li>
+            <li><strong>Chapter 3 — Finding Hope:</strong> Escalates consequences based on prior choices. Players find community, isolate, or forge new connections.</li>
+        </ul>
+    </section>
+
+    <section class="case-section alt">
+        <div class="case-section-inner">
+            <h2>Playtesting & Results</h2>
+            <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-bottom: 0.5rem;">After Iteration 2</h3>
+            <ul>
+                <li>Playtesters immediately identified weak points in narrative illusion</li>
+                <li>Feedback shaped the decision to introduce sub-narratives rather than purely linear branching</li>
+            </ul>
+
+            <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-top: 2rem; margin-bottom: 0.5rem;">After Iteration 3</h3>
+            <ul>
+                <li>Players reported stronger emotional investment in character relationships</li>
+                <li>Moral tension made choices feel consequential even when mechanical outcomes were limited</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="case-section">
+        <h2>Key Learnings</h2>
+        <ul>
+            <li><strong>Moral tension > mechanical branching</strong> — Players care more about choices that reflect their values than choices that change the plot</li>
+            <li><strong>Voice consistency across branches is critical</strong> — Character dialogue must feel authentic whether the player is aggressive, diplomatic, or avoidant</li>
+            <li><strong>Iteration based on real feedback > theory</strong> — The Narrative Taxonomy of Choices provided structure, but playtester reactions revealed what actually worked emotionally</li>
+            <li><strong>Sub-narratives preserve agency without sprawl</strong> — Branching paths can funnel back to a main story without feeling "fake" if emotional consequences persist</li>
+        </ul>
+    </section>
+
+    <section class="case-section alt">
+        <div class="case-section-inner">
+            <h2>In Progress</h2>
+            <span class="wip-banner">Active Development</span>
+            <ul>
+                <li><strong>Ren'Py build:</strong> Coding in dialogue logic and conditional events</li>
+                <li><strong>Trust system:</strong> Visualizing bias shifts per interaction</li>
+                <li>Finalizing UI styles (color palette, typography, hover states, sound cues)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="case-section">
+        <h2>Impact</h2>
+        <p>
+            This project pushes the boundaries of what serious narrative games can do when grounded in
+            real-world parallels. While still in development, the systems and worldbuilding work already
+            model how to blend gameplay, UI, and sociopolitical storytelling into a cohesive experience.
+        </p>
     </section>
 
     <footer>
