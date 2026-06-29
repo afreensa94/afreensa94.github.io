@@ -1192,6 +1192,17 @@
 
         spacer.style.height = (numSlides * 100) + 'vh';
 
+        // Force all cards to same height
+        function equalizeCards() {
+            const cards = document.querySelectorAll('.project-slide .project-card');
+            cards.forEach(c => c.style.height = 'auto');
+            let maxH = 0;
+            cards.forEach(c => { if (c.offsetHeight > maxH) maxH = c.offsetHeight; });
+            cards.forEach(c => c.style.height = maxH + 'px');
+        }
+        equalizeCards();
+        window.addEventListener('resize', equalizeCards);
+
         function updateCards() {
             const spacerRect = spacer.getBoundingClientRect();
             const scrolled = -spacerRect.top;
