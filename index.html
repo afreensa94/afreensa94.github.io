@@ -341,7 +341,6 @@
             width: calc(100% - 6rem);
             max-width: 800px;
             transform: translate(-50%, -50%);
-            opacity: 0;
             pointer-events: none;
             will-change: transform, opacity;
         }
@@ -1175,7 +1174,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Pinned card stack — scroll position directly drives card transforms
+        // Apple Wallet style — cards stacked, top card peels away on scroll
         const spacer = document.getElementById('scroll-spacer');
         const slides = document.querySelectorAll('.project-slide');
         const grid = document.getElementById('projects-grid');
@@ -1192,25 +1191,27 @@
             slides.forEach((slide, i) => {
                 const cardStart = i * segmentHeight;
                 const cardEnd = (i + 1) * segmentHeight;
-                let t = (scrolled - cardStart) / segmentHeight;
-                t = Math.max(0, Math.min(1, t));
+
+                // z-index: bottom cards have lower z, top cards higher
+                // But the CURRENT card being peeled should be on top
+                slide.style.zIndex = numSlides - i;
 
                 if (scrolled < cardStart) {
-                    // Below viewport — waiting to enter from bottom
-                    const dist = (cardStart - scrolled) / segmentHeight;
-                    slide.style.transform = 'translate(-50%, calc(-50% + ' + (dist * 120) + '%))';
-                    slide.style.opacity = Math.max(0, 1 - dist);
+                    // Not yet reached — card sits centered, waiting underneath
+                    slide.style.transform = 'translate(-50%, -50%) scale(' + (1 - (numSlides - i) * 0.02) + ')';
+                    slide.style.opacity = '1';
                     slide.style.pointerEvents = 'none';
                 } else if (scrolled >= cardStart && scrolled < cardEnd) {
-                    // Active card — centered
-                    const exitProgress = t;
-                    slide.style.transform = 'translate(-50%, calc(-50% - ' + (exitProgress * 120) + '%))';
-                    slide.style.opacity = exitProgress < 0.7 ? 1 : 1 - ((exitProgress - 0.7) / 0.3);
-                    slide.style.pointerEvents = exitProgress < 0.5 ? 'auto' : 'none';
+                    // Active — this card is peeling upward
+                    const t = (scrolled - cardStart) / segmentHeight;
+                    slide.style.zIndex = numSlides + 1;
+                    slide.style.transform = 'translate(-50%, calc(-50% - ' + (t * 110) + 'vh))';
+                    slide.style.opacity = t < 0.8 ? '1' : String(1 - (t - 0.8) / 0.2);
+                    slide.style.pointerEvents = t < 0.5 ? 'auto' : 'none';
                 } else {
-                    // Above viewport — already scrolled past
-                    slide.style.transform = 'translate(-50%, calc(-50% - 120%))';
-                    slide.style.opacity = 0;
+                    // Already peeled away — off screen above
+                    slide.style.transform = 'translate(-50%, calc(-50% - 110vh))';
+                    slide.style.opacity = '0';
                     slide.style.pointerEvents = 'none';
                 }
             });
