@@ -1199,11 +1199,10 @@
                 slide.style.zIndex = numSlides - i;
 
                 if (scrolled < cardStart) {
-                    // Not yet reached — stacked behind with slight offset to peek out
+                    // Not yet reached — stacked behind, peeking from bottom
                     const depth = i - Math.max(0, Math.floor(scrolled / segmentHeight));
-                    const offsetY = depth * 6;
-                    const offsetX = depth * 3;
-                    slide.style.transform = 'translate(calc(-50% + ' + offsetX + 'px), calc(-50% + ' + offsetY + 'px))';
+                    const offsetY = depth * 10;
+                    slide.style.transform = 'translate(-50%, calc(-50% + ' + offsetY + 'px))';
                     slide.style.opacity = '1';
                     slide.style.pointerEvents = 'none';
                 } else if (scrolled >= cardStart && scrolled < cardEnd) {
