@@ -319,13 +319,11 @@
         }
 
         .project-slide {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem 3rem;
-            position: sticky;
-            top: 0;
         }
 
         .projects-grid {
@@ -333,13 +331,24 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
             padding: 4rem 0;
-            opacity: 0;
-            transition: opacity 0.6s ease;
         }
 
-        .projects-grid.grid-visible {
-            opacity: 1;
+        .projects-grid .project-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
+
+        .projects-grid.grid-visible .project-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .projects-grid.grid-visible .project-card:nth-child(2) { transition-delay: 0.08s; }
+        .projects-grid.grid-visible .project-card:nth-child(3) { transition-delay: 0.16s; }
+        .projects-grid.grid-visible .project-card:nth-child(4) { transition-delay: 0.24s; }
+        .projects-grid.grid-visible .project-card:nth-child(5) { transition-delay: 0.32s; }
+        .projects-grid.grid-visible .project-card:nth-child(6) { transition-delay: 0.40s; }
 
         /* THE SIGNATURE: paper cards lifted off dark background */
         .project-card {
@@ -359,23 +368,17 @@
 
         .project-slide .project-card {
             opacity: 0;
-            transform: translateY(60px) scale(0.96);
+            transform: translateY(60px) scale(0.97);
+            transition: opacity 0.55s ease, transform 0.55s ease;
         }
 
-        .project-slide.active .project-card {
+        .project-slide.in-view .project-card {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
 
-        .project-slide.exiting-up .project-card {
-            opacity: 0;
-            transform: translateY(-60px) scale(0.96);
-        }
-
         .projects-grid .project-card {
             max-width: none;
-            opacity: 1;
-            transform: none;
         }
 
         .project-card::after {
@@ -1159,26 +1162,19 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Parallax project cards
+        // Parallax project cards — appear/disappear on scroll both directions
         const slides = document.querySelectorAll('.project-slide');
         const grid = document.getElementById('projects-grid');
 
         const slideObserver = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting) {
-                    slides.forEach(s => {
-                        s.classList.remove('active', 'exiting-up');
-                    });
-                    e.target.classList.add('active');
-
-                    const idx = parseInt(e.target.dataset.index);
-                    slides.forEach(s => {
-                        const sIdx = parseInt(s.dataset.index);
-                        if (sIdx < idx) s.classList.add('exiting-up');
-                    });
+                    e.target.classList.add('in-view');
+                } else {
+                    e.target.classList.remove('in-view');
                 }
             });
-        }, { threshold: 0.55 });
+        }, { threshold: 0.35 });
 
         slides.forEach(s => slideObserver.observe(s));
 
@@ -1190,7 +1186,7 @@
                     e.target.classList.remove('grid-visible');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08 });
 
         gridObserver.observe(grid);
     </script>
