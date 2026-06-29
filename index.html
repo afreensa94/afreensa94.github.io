@@ -1200,7 +1200,7 @@
 
                 if (scrolled < cardStart) {
                     // Not yet reached — card sits centered, waiting underneath
-                    slide.style.transform = 'translate(-50%, -50%) scale(' + (1 - (numSlides - i) * 0.02) + ')';
+                    slide.style.transform = 'translate(-50%, -50%)';
                     slide.style.opacity = '1';
                     slide.style.pointerEvents = 'none';
                 } else if (scrolled >= cardStart && scrolled < cardEnd) {
