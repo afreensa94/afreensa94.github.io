@@ -314,37 +314,55 @@
         ============================================ */
         .case-studies-inner { max-width: 1200px; margin: 0 auto; }
 
+        /* Scroll-pinned card stack */
         .projects-scroll-container {
             position: relative;
         }
 
-        .project-slide {
-            min-height: 100vh;
+        .scroll-spacer {
+            position: relative;
+        }
+
+        .card-viewport {
+            position: sticky;
+            top: 0;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem 3rem;
+            overflow: hidden;
         }
 
-        .project-slide:last-child {
-            min-height: 60vh;
+        .project-slide {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: calc(100% - 6rem);
+            max-width: 800px;
+            transform: translate(-50%, 100%) scale(0.95);
+            opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        opacity 0.45s ease;
+            pointer-events: none;
         }
 
+        .project-slide.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .project-slide.above {
+            transform: translate(-50%, -200%) scale(0.95);
+            opacity: 0;
+        }
+
+        /* Grid at the end */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
-            padding: 4rem 0;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height 0.6s ease, opacity 0.5s ease, padding 0.6s ease;
-            padding: 0;
-        }
-
-        .projects-grid.grid-visible {
-            max-height: 4000px;
-            opacity: 1;
             padding: 4rem 0;
         }
 
@@ -372,24 +390,11 @@
             padding: 2.5rem;
             border-radius: 3px;
             box-shadow: var(--shadow-paper);
-            transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: box-shadow 0.32s ease, transform 0.32s ease;
             text-decoration: none;
             display: block;
             position: relative;
             overflow: hidden;
-            max-width: 800px;
-            width: 100%;
-        }
-
-        .project-slide .project-card {
-            opacity: 0;
-            transform: translateY(60px) scale(0.97);
-            transition: opacity 0.55s ease, transform 0.55s ease;
-        }
-
-        .project-slide.in-view .project-card {
-            opacity: 1;
-            transform: translateY(0) scale(1);
         }
 
         .projects-grid .project-card {
@@ -720,8 +725,12 @@
                 grid-template-columns: 1fr;
             }
 
-            .project-slide {
+            .card-viewport {
                 padding: 2rem 1.5rem;
+            }
+
+            .project-slide {
+                width: calc(100% - 3rem);
             }
 
             .project-card.featured {
@@ -825,146 +834,147 @@
         </div>
 
         <div class="case-studies-inner">
-            <!-- Individual scroll slides -->
             <div class="projects-scroll-container">
+                <div class="scroll-spacer" id="scroll-spacer">
+                    <div class="card-viewport">
+                        <div class="project-slide" data-index="0">
+                            <a href="another-day.html" class="project-card featured">
+                                <div class="project-meta">
+                                    <span class="project-type">Serious Game · In Development</span>
+                                    <span class="project-year">2024–Present</span>
+                                </div>
+                                <h3 class="project-title">Another Day</h3>
+                                <p class="project-subtitle">A papercraft serious game designed to simulate, navigate, and ground CPTSD behavioral loops.</p>
+                                <p class="project-desc">
+                                    An experimental serious game translating the phenomenology of CPTSD into
+                                    interactive mechanics — a shifting maze-house structure mirrors emotional
+                                    dysregulation; shadow systems externalize intrusive thought patterns;
+                                    a layered papercraft aesthetic holds the tension between fragility and depth.
+                                    Players don't just observe trauma response — they navigate it.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Trauma-Informed Design</span>
+                                    <span class="project-tag">Environmental Storytelling</span>
+                                    <span class="project-tag">Affective Mechanics</span>
+                                    <span class="project-tag">Narrative Architecture</span>
+                                    <span class="project-tag">Horror/Atmospheric</span>
+                                </div>
+                            </a>
+                        </div>
 
-                <div class="project-slide" data-index="0">
-                    <a href="another-day.html" class="project-card featured">
-                        <div class="project-meta">
-                            <span class="project-type">Serious Game · In Development</span>
-                            <span class="project-year">2024–Present</span>
+                        <div class="project-slide" data-index="1">
+                            <a href="spellstep.html" class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-type">UX Research · Tool Design</span>
+                                    <span class="project-year">2023</span>
+                                </div>
+                                <h3 class="project-title">SpellStep</h3>
+                                <p class="project-subtitle">Task initiation scaffolding for neurodivergent users.</p>
+                                <p class="project-desc">
+                                    A digital task-initiation tool built on Self-Determination Theory,
+                                    using an AI companion to scaffold motivation and reduce behavioral
+                                    friction for users with ADHD and executive function challenges.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">SDT Framework</span>
+                                    <span class="project-tag">Neurodivergent UX</span>
+                                    <span class="project-tag">AI Companion</span>
+                                    <span class="project-tag">Behavioral Science</span>
+                                </div>
+                            </a>
                         </div>
-                        <h3 class="project-title">Another Day</h3>
-                        <p class="project-subtitle">A papercraft serious game designed to simulate, navigate, and ground CPTSD behavioral loops.</p>
-                        <p class="project-desc">
-                            An experimental serious game translating the phenomenology of CPTSD into
-                            interactive mechanics — a shifting maze-house structure mirrors emotional
-                            dysregulation; shadow systems externalize intrusive thought patterns;
-                            a layered papercraft aesthetic holds the tension between fragility and depth.
-                            Players don't just observe trauma response — they navigate it.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Trauma-Informed Design</span>
-                            <span class="project-tag">Environmental Storytelling</span>
-                            <span class="project-tag">Affective Mechanics</span>
-                            <span class="project-tag">Narrative Architecture</span>
-                            <span class="project-tag">Horror/Atmospheric</span>
+
+                        <div class="project-slide" data-index="2">
+                            <a href="space-odyssey.html" class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-type">Serious Game · Client Work</span>
+                                    <span class="project-year">2023</span>
+                                </div>
+                                <h3 class="project-title">Space Odyssey</h3>
+                                <p class="project-subtitle">Narrative game for the Chicago Refugee Coalition.</p>
+                                <p class="project-desc">
+                                    A narrative digital game developed with the Chicago Refugee Coalition
+                                    to actively teach and evoke deep empathy toward displaced populations —
+                                    demoed at the CRC Annual Gala and featured by DePaul's
+                                    College of Computing & Digital Media.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Empathy Design</span>
+                                    <span class="project-tag">Client Collaboration</span>
+                                    <span class="project-tag">Narrative UX</span>
+                                    <span class="project-tag">Social Impact</span>
+                                </div>
+                            </a>
                         </div>
-                    </a>
+
+                        <div class="project-slide" data-index="3">
+                            <a href="redress.html" class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-type">Interactive Narrative · RA Research</span>
+                                    <span class="project-year">2023</span>
+                                </div>
+                                <h3 class="project-title">Redress</h3>
+                                <p class="project-subtitle">Historical trauma through interactive narrative.</p>
+                                <p class="project-desc">
+                                    An interactive historical narrative developed with the UCSC History
+                                    Department during RA work at DePaul — exploring how interactive systems
+                                    can make historical trauma emotionally present without being exploitative,
+                                    using structural scaffolding to hold difficult content.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Historical Narrative</span>
+                                    <span class="project-tag">Twine Systems</span>
+                                    <span class="project-tag">RA Research</span>
+                                    <span class="project-tag">Affective Design</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="project-slide" data-index="4">
+                            <a href="forced-migration.html" class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-type">eLearning · Social Impact</span>
+                                    <span class="project-year">2024</span>
+                                </div>
+                                <h3 class="project-title">Nuances of Forced Migration</h3>
+                                <p class="project-subtitle">Interactive e-learning course on the systems behind forced displacement.</p>
+                                <p class="project-desc">
+                                    An interactive e-learning course unpacking the layered complexities of forced
+                                    migration — blending UI/UX storytelling, ELSI Principles, and scenario-based
+                                    branching narratives to educate with empathy and structural depth.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">ELSI Principles</span>
+                                    <span class="project-tag">eLearning Design</span>
+                                    <span class="project-tag">Empathy Design</span>
+                                    <span class="project-tag">Social Impact</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="project-slide" data-index="5">
+                            <a href="boom-haunted.html" class="project-card">
+                                <div class="project-meta">
+                                    <span class="project-type">Comedy Horror · Team Project</span>
+                                    <span class="project-year">2023</span>
+                                </div>
+                                <h3 class="project-title">Boom! Haunted</h3>
+                                <p class="project-subtitle">A comedy-paranormal haunting adventure.</p>
+                                <p class="project-desc">
+                                    A comedy-paranormal game where you play as a dramatic ghost haunting
+                                    the world's most clueless NPC. Explore, possess objects, and unleash
+                                    chaotic hauntings — every scare comes with a punchline.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Comedy Horror</span>
+                                    <span class="project-tag">3D Modeling</span>
+                                    <span class="project-tag">Narrative Design</span>
+                                    <span class="project-tag">Game Design</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="project-slide" data-index="1">
-                    <a href="spellstep.html" class="project-card">
-                        <div class="project-meta">
-                            <span class="project-type">UX Research · Tool Design</span>
-                            <span class="project-year">2023</span>
-                        </div>
-                        <h3 class="project-title">SpellStep</h3>
-                        <p class="project-subtitle">Task initiation scaffolding for neurodivergent users.</p>
-                        <p class="project-desc">
-                            A digital task-initiation tool built on Self-Determination Theory,
-                            using an AI companion to scaffold motivation and reduce behavioral
-                            friction for users with ADHD and executive function challenges.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">SDT Framework</span>
-                            <span class="project-tag">Neurodivergent UX</span>
-                            <span class="project-tag">AI Companion</span>
-                            <span class="project-tag">Behavioral Science</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-slide" data-index="2">
-                    <a href="space-odyssey.html" class="project-card">
-                        <div class="project-meta">
-                            <span class="project-type">Serious Game · Client Work</span>
-                            <span class="project-year">2023</span>
-                        </div>
-                        <h3 class="project-title">Space Odyssey</h3>
-                        <p class="project-subtitle">Narrative game for the Chicago Refugee Coalition.</p>
-                        <p class="project-desc">
-                            A narrative digital game developed with the Chicago Refugee Coalition
-                            to actively teach and evoke deep empathy toward displaced populations —
-                            demoed at the CRC Annual Gala and featured by DePaul's
-                            College of Computing & Digital Media.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Empathy Design</span>
-                            <span class="project-tag">Client Collaboration</span>
-                            <span class="project-tag">Narrative UX</span>
-                            <span class="project-tag">Social Impact</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-slide" data-index="3">
-                    <a href="redress.html" class="project-card">
-                        <div class="project-meta">
-                            <span class="project-type">Interactive Narrative · RA Research</span>
-                            <span class="project-year">2023</span>
-                        </div>
-                        <h3 class="project-title">Redress</h3>
-                        <p class="project-subtitle">Historical trauma through interactive narrative.</p>
-                        <p class="project-desc">
-                            An interactive historical narrative developed with the UCSC History
-                            Department during RA work at DePaul — exploring how interactive systems
-                            can make historical trauma emotionally present without being exploitative,
-                            using structural scaffolding to hold difficult content.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Historical Narrative</span>
-                            <span class="project-tag">Twine Systems</span>
-                            <span class="project-tag">RA Research</span>
-                            <span class="project-tag">Affective Design</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-slide" data-index="4">
-                    <a href="forced-migration.html" class="project-card">
-                        <div class="project-meta">
-                            <span class="project-type">eLearning · Social Impact</span>
-                            <span class="project-year">2024</span>
-                        </div>
-                        <h3 class="project-title">Nuances of Forced Migration</h3>
-                        <p class="project-subtitle">Interactive e-learning course on the systems behind forced displacement.</p>
-                        <p class="project-desc">
-                            An interactive e-learning course unpacking the layered complexities of forced
-                            migration — blending UI/UX storytelling, ELSI Principles, and scenario-based
-                            branching narratives to educate with empathy and structural depth.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">ELSI Principles</span>
-                            <span class="project-tag">eLearning Design</span>
-                            <span class="project-tag">Empathy Design</span>
-                            <span class="project-tag">Social Impact</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="project-slide" data-index="5">
-                    <a href="boom-haunted.html" class="project-card">
-                        <div class="project-meta">
-                            <span class="project-type">Comedy Horror · Team Project</span>
-                            <span class="project-year">2023</span>
-                        </div>
-                        <h3 class="project-title">Boom! Haunted</h3>
-                        <p class="project-subtitle">A comedy-paranormal haunting adventure.</p>
-                        <p class="project-desc">
-                            A comedy-paranormal game where you play as a dramatic ghost haunting
-                            the world's most clueless NPC. Explore, possess objects, and unleash
-                            chaotic hauntings — every scare comes with a punchline.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Comedy Horror</span>
-                            <span class="project-tag">3D Modeling</span>
-                            <span class="project-tag">Narrative Design</span>
-                            <span class="project-tag">Game Design</span>
-                        </div>
-                    </a>
-                </div>
-
             </div>
 
             <!-- Grid view at the end -->
@@ -1177,22 +1187,49 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Parallax project cards — appear/disappear on scroll both directions
+        // Pinned card stack — scroll position drives which card is visible
+        const spacer = document.getElementById('scroll-spacer');
         const slides = document.querySelectorAll('.project-slide');
         const grid = document.getElementById('projects-grid');
+        const numSlides = slides.length;
 
-        const slideObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('in-view');
-                } else {
-                    e.target.classList.remove('in-view');
-                }
-            });
-        }, { threshold: 0.35 });
+        // Set spacer height: one viewport per card
+        spacer.style.height = (numSlides * 100) + 'vh';
 
-        slides.forEach(s => slideObserver.observe(s));
+        let lastActive = -1;
 
+        function updateCards() {
+            const spacerRect = spacer.getBoundingClientRect();
+            const scrolled = -spacerRect.top;
+            const vh = window.innerHeight;
+            const progress = scrolled / (spacerRect.height - vh);
+            const activeIndex = Math.min(Math.floor(progress * numSlides), numSlides - 1);
+
+            if (activeIndex !== lastActive) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active', 'above');
+                    if (i === activeIndex) {
+                        slide.classList.add('active');
+                    } else if (i < activeIndex) {
+                        slide.classList.add('above');
+                    }
+                });
+                lastActive = activeIndex;
+            }
+
+            requestAnimationFrame(updateCards);
+        }
+
+        // Start when spacer is near viewport
+        const startObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                requestAnimationFrame(updateCards);
+                startObserver.disconnect();
+            }
+        }, { rootMargin: '200px' });
+        startObserver.observe(spacer);
+
+        // Grid fade-in
         const gridObserver = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting) {
