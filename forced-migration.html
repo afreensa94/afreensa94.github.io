@@ -45,6 +45,13 @@
         .case-section ul li { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; padding: 0.4rem 0; padding-left: 1.2rem; position: relative; }
         .case-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent-sage); }
         .wip-banner { display: inline-block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.4rem 1rem; background: rgba(122,155,111,0.15); color: var(--accent-sage); border-radius: 2px; margin-bottom: 2rem; }
+        .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .stat-box { padding: 1.5rem; border: 1px solid var(--border-light); border-radius: 3px; text-align: center; }
+        .stat-num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--text-light); line-height: 1; }
+        .stat-label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.4rem; }
+        .case-section h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-bottom: 0.5rem; margin-top: 2rem; }
+        .case-section h3:first-of-type { margin-top: 0; }
+        @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
         footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); }
         footer p { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--text-muted); }
         @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; } .case-meta { gap: 1.2rem; } }
@@ -57,21 +64,25 @@
     </nav>
 
     <section class="case-hero">
-        <p class="case-eyebrow">eLearning · Social Impact</p>
+        <p class="case-eyebrow">eLearning · UX Research · Social Impact</p>
         <h1 class="case-title">Nuances of Forced Migration</h1>
         <p class="case-subtitle">An interactive e-learning course unpacking the systems behind forced displacement.</p>
         <div class="case-meta">
             <div class="meta-item">
                 <span class="meta-label">Role</span>
-                <span class="meta-value">UX/UI Designer</span>
+                <span class="meta-value">Lead Instructional Designer & UX Researcher</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Platform</span>
-                <span class="meta-value">Framer Prototype</span>
+                <span class="meta-value">Framer</span>
             </div>
             <div class="meta-item">
-                <span class="meta-label">Type</span>
-                <span class="meta-value">eLearning System / Social Impact</span>
+                <span class="meta-label">Course Length</span>
+                <span class="meta-value">15–30 minutes · 6 modules</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Context</span>
+                <span class="meta-value">HCI 520 — Learner-Centered Design</span>
             </div>
         </div>
         <div class="case-tags">
@@ -129,26 +140,86 @@
     </section>
 
     <section class="case-section">
-        <h2>In Progress</h2>
-        <span class="wip-banner">Active Development</span>
+        <h2>Evaluation Methodology</h2>
+        <p>
+            Learning outcomes were tested using a <strong>pre/post-test design</strong> with 6 participants.
+            Each participant completed a questionnaire before and after the course to measure knowledge gain and empathy shift
+            across three learning objectives.
+        </p>
+
+        <div class="stat-row">
+            <div class="stat-box">
+                <div class="stat-num">6</div>
+                <div class="stat-label">Participants</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">2</div>
+                <div class="stat-label">Test instruments<br>(pre + post)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">3</div>
+                <div class="stat-label">Learning objectives<br>measured</div>
+            </div>
+        </div>
+
+        <h3>Recruitment</h3>
+        <p>
+            Participants were recruited from the HCI 520 cohort — graduate students with varying prior knowledge of forced migration.
+            The sample was intentionally kept small to respect time constraints, with the trade-off of limited statistical generalizability.
+        </p>
+
+        <h3>Instruments</h3>
         <ul>
-            <li>Finalizing interactive components like quizzes, scenario-based pathways, and reflection prompts</li>
-            <li>Refining tone and pacing across modules to accommodate diverse learners (ESL, neurodiverse, etc.)</li>
-            <li>Expanding responsive design for mobile-first learners without compromising layout integrity</li>
-            <li>Syncing content with WCAG accessibility guidelines (color contrast, font legibility, etc.)</li>
+            <li><strong>Pre-test (8 questions):</strong> Multiple choice, mapped to LO1 (foundational knowledge of forced migration causes and affected populations)</li>
+            <li><strong>Post-test (10 questions):</strong> Multiple choice + Likert scale (confidence rating 1–5) + open-ended reflection question, mapped to LO1, LO2, and LO3</li>
+            <li>The Likert and open-ended questions were added after the initial iteration — early testing revealed the instrument needed more introspective depth to capture empathy shifts</li>
         </ul>
     </section>
 
     <section class="case-section alt">
         <div class="case-section-inner">
-            <h2>Impact</h2>
+            <h2>Findings</h2>
+
+            <h3>Knowledge (LO1)</h3>
             <p>
-                This project aims to redefine digital learning around humanitarian crises — by swapping trauma
-                voyeurism for <strong>structured empathy, data-informed storytelling, and human-centered design</strong>.
-                It not only teaches what forced migration is, but dares learners to interrogate the deeper question:
-                Why does it continue to happen, and who's benefiting?
+                Most participants entered with pre-existing foundational knowledge. Post-test responses revealed
+                <strong>nuanced shifts</strong> rather than dramatic gains — for example, one participant shifted from
+                "All of the above" to a more specific cause (persecution and political instability), suggesting the course
+                deepened rather than introduced understanding. Some question-level variance pointed to areas where
+                content clarity could be improved.
             </p>
+
+            <h3>Emotional Understanding (LO2)</h3>
+            <p>
+                The scenario-based Module 5 — which placed learners in the role of a displaced individual facing survival decisions —
+                was the primary driver of LO2 outcomes. Post-test responses showed a shift from factual recall to
+                <strong>personal and emotional reflection</strong>.
+            </p>
+
+            <h3>Empathy & Behavioral Insight (LO3)</h3>
+            <p>
+                <strong>2 out of 6 participants</strong> explicitly expressed empathy in their open-ended post-test responses.
+                Several expressed a desire to create safer spaces for displaced people — a behavioral intention shift
+                that went beyond the course's stated knowledge objectives.
+            </p>
+
+            <h3>Limitations</h3>
+            <ul>
+                <li>Small sample size (n=6) limits statistical significance and generalizability</li>
+                <li>Convenience sampling from one cohort may not reflect diverse learner populations</li>
+                <li>Self-reported empathy is difficult to validate — responses reflect stated intention, not observed behavior</li>
+            </ul>
         </div>
+    </section>
+
+    <section class="case-section">
+        <h2>Key Learnings</h2>
+        <ul>
+            <li><strong>Scenario-based learning drives affective outcomes</strong> — Module 5's choice-based immersion produced the strongest empathy responses, outperforming informational modules</li>
+            <li><strong>Instrument design is iterative</strong> — The initial questionnaire lacked depth for measuring empathy; adding Likert + open-ended questions mid-process was the right call</li>
+            <li><strong>Cognitive load and emotional load must be balanced</strong> — Keeping the course to 15–30 min with segmented modules prevented fatigue on a heavy topic</li>
+            <li><strong>Pre-existing knowledge shapes learning goals</strong> — With an informed audience, the design goal shifted from teaching facts to deepening perspective</li>
+        </ul>
     </section>
 
     <footer>
