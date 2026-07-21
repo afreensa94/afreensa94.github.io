@@ -37,18 +37,28 @@
         .tag { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.38rem 0.9rem; border: 1px solid var(--border-light); color: var(--text-muted); border-radius: 2px; }
         .case-section { padding: 4rem 3rem; max-width: 900px; }
         .case-section.alt { background: var(--bg-mid); max-width: 100%; }
-        .case-section.alt .case-section-inner { max-width: 900px; }
-        .case-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--text-light); margin-bottom: 1.5rem; }
+        .case-section.alt .inner { max-width: 900px; margin: 0 auto; }
+        .case-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--text-light); margin-bottom: 0.5rem; }
+        .case-section h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-bottom: 0.5rem; margin-top: 2rem; }
+        .case-section h3:first-of-type { margin-top: 0; }
+        .section-caption { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.7; }
         .case-section p { font-size: 1rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.2rem; }
         .case-section strong { color: var(--text-light); font-weight: 400; }
         .case-section ul { list-style: none; padding: 0; }
         .case-section ul li { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; padding: 0.4rem 0; padding-left: 1.2rem; position: relative; }
         .case-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent-sage); }
+        .img-full { width: 100%; border-radius: 4px; border: 1px solid var(--border-light); display: block; margin: 1.5rem 0 0.5rem; }
+        .img-caption { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+        .img-grid-item img { width: 100%; border-radius: 4px; border: 1px solid var(--border-light); display: block; }
+        .img-grid-item .img-caption { margin-top: 0.5rem; margin-bottom: 0; }
+        .callout { padding: 1.5rem 2rem; border-left: 2px solid var(--accent-bronze); background: rgba(184,132,90,0.06); border-radius: 0 3px 3px 0; margin: 2rem 0; }
+        .callout p { font-family: var(--font-display); font-size: 1.05rem; font-style: italic; color: var(--text-light); line-height: 1.6; margin-bottom: 0; }
         .btn-proto { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; background: var(--paper); color: var(--ink); text-decoration: none; font-size: 0.83rem; font-weight: 500; letter-spacing: 0.04em; border-radius: 2px; transition: all 0.22s ease; margin-top: 1rem; }
         .btn-proto:hover { background: var(--paper-warm); transform: translateY(-2px); }
         footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); }
         footer p { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--text-muted); }
-        @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; } .case-meta { gap: 1.2rem; } }
+        @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; } .img-grid { grid-template-columns: 1fr; } .case-meta { gap: 1.2rem; } }
     </style>
 </head>
 <body>
@@ -57,90 +67,138 @@
         <a href="index.html#work" class="nav-back">← Back to Work</a>
     </nav>
 
+    <!-- HERO -->
     <section class="case-hero">
-        <p class="case-eyebrow">Interactive Narrative · RA Research</p>
+        <p class="case-eyebrow">UX/UI Design · Interactive Narrative · RA Research</p>
         <h1 class="case-title">Redress</h1>
-        <p class="case-subtitle">Historical trauma through interactive narrative.</p>
+        <p class="case-subtitle">A Twine-based educational game teaching Asian American civil liberties history through player-driven narrative.</p>
         <div class="case-meta">
             <div class="meta-item">
                 <span class="meta-label">Role</span>
-                <span class="meta-value">UX/UI Designer</span>
+                <span class="meta-value">UX/UI Designer & Interaction Developer</span>
             </div>
             <div class="meta-item">
                 <span class="meta-label">Platform</span>
-                <span class="meta-value">Twine (Interactive Fiction)</span>
+                <span class="meta-value">Twine (SugarCube) + Figma</span>
             </div>
             <div class="meta-item">
-                <span class="meta-label">Collaboration</span>
-                <span class="meta-value">Prof. Lien Tran, Full Spectrum Features</span>
+                <span class="meta-label">Partner</span>
+                <span class="meta-value">Prof. Lien Tran · Full Spectrum Features</span>
             </div>
             <div class="meta-item">
-                <span class="meta-label">Type</span>
-                <span class="meta-value">Research Assistantship / Social Impact Game</span>
+                <span class="meta-label">Audience</span>
+                <span class="meta-value">High school & college students</span>
             </div>
         </div>
         <div class="case-tags">
+            <span class="tag">UX/UI Design</span>
+            <span class="tag">Interaction Development</span>
             <span class="tag">Historical Narrative</span>
-            <span class="tag">Twine Systems</span>
-            <span class="tag">RA Research</span>
+            <span class="tag">Serious Games</span>
             <span class="tag">Affective Design</span>
+            <span class="tag">RA Research</span>
         </div>
     </section>
 
+    <!-- OVERVIEW -->
     <section class="case-section alt">
-        <div class="case-section-inner">
+        <div class="inner">
             <h2>Overview</h2>
+            <p class="section-caption">Redress is an interactive narrative game designed to teach students about Japanese American incarceration during WWII — built in partnership with Prof. Lien Tran and Full Spectrum Features as part of a public history research initiative.</p>
             <p>
-                Redress is an interactive Twine-based narrative game designed to teach high school and college
-                students about <strong>Asian American history and civil liberties</strong>, particularly surrounding
-                Japanese American incarceration during WWII. The game emphasizes empathy, agency, and historical
-                understanding through player-driven storytelling.
+                The game places players in the role of a library researcher uncovering archival evidence of Executive Order 9066. Rather than presenting history as fact to absorb, Redress makes it <strong>experiential — players make choices, navigate characters, and sit with the weight of what they find.</strong>
+            </p>
+            <p>
+                My role spanned the full design-to-implementation pipeline: conceiving the dialogue system, wireframing the UI, and building the interaction layer directly in Twine using SugarCube macros, custom CSS, and JavaScript.
             </p>
         </div>
     </section>
 
+    <!-- DESIGN GOALS -->
     <section class="case-section">
         <h2>Design Goals</h2>
         <ul>
-            <li>Make historical information experiential through choices and consequences</li>
-            <li>Empower players with perspective-taking and critical thinking</li>
-            <li>Avoid trauma portrayal; instead, focus on resilience, context, and redress</li>
-            <li>Deliver educational content subtly through meaningful gameplay mechanics</li>
+            <li>Make historical information experiential through player choices and consequences</li>
+            <li>Avoid trauma voyeurism — center resilience, context, and redress instead</li>
+            <li>Design character-driven dialogue that shifts layout and tone per speaker</li>
+            <li>Deliver educational content through gameplay, not exposition</li>
+            <li>Build a system that could scale to additional characters and scenes</li>
         </ul>
     </section>
 
+    <!-- DIALOGUE SYSTEM -->
     <section class="case-section alt">
-        <div class="case-section-inner">
-            <h2>My Contributions</h2>
-            <ul>
-                <li>Prototyped a hi-fi wireframe of the game's interface in Twine</li>
-                <li>Designed dynamic UI/UX systems for dialogue box mechanics (floating text, dialogue box switching based on character)</li>
-                <li>Progress indicators and player memory trackers</li>
-                <li>Codex-style Historical Glossary integration</li>
-                <li>Crafted logic flow for player choices using advanced macros</li>
-                <li>Collaborated on narrative tone and branching story design</li>
-                <li>Ensured visual consistency with accessibility (font hierarchy, contrast, flow)</li>
-            </ul>
+        <div class="inner">
+            <h2>Building the Dialogue System</h2>
+            <p class="section-caption">Redress's narrative depended on character-driven dialogue where the portrait, name tag, and layout shift based on who's speaking. I designed and implemented this switching logic in Twine using SugarCube macros, custom CSS, and step-based state management — treating the dialogue system as both a UX pattern and a piece of interaction architecture.</p>
+
+            <div class="callout">
+                <p>Twine isn't built for this level of transition. I built it anyway — starting from a sketch, ending with a working fade-in/fade-out character switch system that Twine has no native support for.</p>
+            </div>
+
+            <h3>Initial Concept</h3>
+            <img src="images/Redress_FigmaSketch.webp" alt="Figma concept sketch of the Redress dialogue box system showing character portrait, name tab, and dialogue area layout" class="img-full">
+            <p class="img-caption">Figma concept sketch — dialogue box layout with character portrait, name tab, and text area</p>
+
+            <h3>Implemented — Character Switching in Action</h3>
+            <div class="img-grid">
+                <div class="img-grid-item">
+                    <img src="images/Redress_ErikaDialogueBox.jpg" alt="Live Twine game showing Erika's dialogue box — character portrait on left, name tab at top, dialogue text on right with Next button">
+                    <p class="img-caption">Erika's dialogue box — mentor character, warm layout</p>
+                </div>
+                <div class="img-grid-item">
+                    <img src="images/Redress_SkylaDB.jpg" alt="Live Twine game showing Skyla's dialogue box — different character portrait and name tag, demonstrating the character switching system">
+                    <p class="img-caption">Skyla's dialogue box — layout and portrait adapt to speaker</p>
+                </div>
+            </div>
+
+            <img src="images/Redress_Initial_implementation.jpg" alt="Live Twine game showing Benji's dialogue box with inline player variable $patron01_Name Simon rendered in narrative prose, demonstrating dynamic name substitution" class="img-full">
+            <p class="img-caption">Benji's dialogue box — inline player-facing variables ($patron01_Name) render dynamically in narrative prose</p>
+
+            <h3>Passage Architecture & Code</h3>
+            <div class="img-grid">
+                <div class="img-grid-item">
+                    <img src="images/Redress_Twine_coding.jpg" alt="Twine passage map showing branching node structure with Continue, Next, and Dialogue Continues passages — custom CSS visible in Story Stylesheet panel">
+                    <p class="img-caption">Twine passage flow — reset step logic on entry, dialogue-wrapper components, continuation branching</p>
+                </div>
+                <div class="img-grid-item">
+                    <img src="images/Redress_DB_HTMLCSS.jpg" alt="Twine editor showing Story Stylesheet with .box-text CSS class, Story JavaScript with jQuery UI bar removal, and passage code with SugarCube macros">
+                    <p class="img-caption">Custom CSS (flex portrait layout, italic text), SugarCube step counter, JS overrides removing default Twine UI chrome</p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- CONTRIBUTIONS -->
     <section class="case-section">
-        <h2>Prototype</h2>
-        <p>
-            Explore the interactive Figma prototype showcasing the UI/UX mockups for Redress.
-        </p>
-        <a href="https://www.figma.com/proto/nr2w3ko6aMMSk1Av3cZHmt/Redress---UX-UI-Mockups?page-id=0%3A1&node-id=678-2462&viewport=-1299%2C2960%2C0.14&t=O0OYqQ1tGEW7mSo8-1&scaling=min-zoom&content-scaling=fixed" target="_blank" rel="noopener" class="btn-proto">View Figma Prototype →</a>
+        <h2>Full Contributions</h2>
+        <ul>
+            <li>Designed the full dialogue UI system in Figma — portrait layout, name tab, text area, fade transitions</li>
+            <li>Implemented character-switching dialogue in Twine using SugarCube macros and step-based state management</li>
+            <li>Built custom CSS for dialogue-wrapper flex layouts and portrait positioning</li>
+            <li>Created fade-in/fade-out transitions between dialogue states — not natively supported by Twine</li>
+            <li>Designed and implemented a dynamic variable system for player-facing character names rendered inline in prose</li>
+            <li>Wrote JavaScript overrides to remove Twine's default UI chrome for a clean game experience</li>
+            <li>Designed progress indicators, player memory trackers, and a Codex-style Historical Glossary</li>
+            <li>Collaborated on narrative tone and branching story design with Prof. Tran's team</li>
+        </ul>
     </section>
 
+    <!-- PROTOTYPE -->
     <section class="case-section alt">
-        <div class="case-section-inner">
-            <h2>Impact</h2>
-            <p>
-                Redress was part of a larger public history project in partnership with <strong>Full Spectrum Features</strong>,
-                meant to preserve underrepresented stories and build educational tools that stick emotionally and cognitively.
-                This work directly contributed to an interactive teaching tool that could enter classrooms across the country.
-            </p>
+        <div class="inner">
+            <h2>Figma Prototype</h2>
+            <p class="section-caption">Full UI/UX mockups for the Redress interface — including all wireframe states, dialogue variations, and navigation flows.</p>
+            <a href="https://www.figma.com/proto/nr2w3ko6aMMSk1Av3cZHmt/Redress---UX-UI-Mockups?page-id=0%3A1&node-id=678-2462&viewport=-1299%2C2960%2C0.14&t=O0OYqQ1tGEW7mSo8-1&scaling=min-zoom&content-scaling=fixed" target="_blank" rel="noopener" class="btn-proto">View Figma Prototype →</a>
         </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="case-section">
+        <h2>Impact</h2>
+        <p>
+            Redress was part of a larger public history project with <strong>Full Spectrum Features</strong>, meant to preserve underrepresented stories and build educational tools that land emotionally and cognitively. The interactive teaching tool was designed to enter classrooms across the country — making this one of the few projects in my portfolio with a direct path to real-world educational deployment.
+        </p>
     </section>
 
     <footer>
