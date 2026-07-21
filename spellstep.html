@@ -25,6 +25,8 @@
         .nav-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 300; letter-spacing: 0.06em; color: var(--text-light); text-decoration: none; }
         .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s; }
         .nav-back:hover { color: var(--text-light); }
+
+        /* Hero */
         .case-hero { padding: 10rem 3rem 4rem; max-width: 900px; }
         .case-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-sage); margin-bottom: 1.5rem; }
         .case-title { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 0.95; color: var(--text-light); margin-bottom: 1.5rem; }
@@ -35,29 +37,60 @@
         .meta-value { font-size: 0.9rem; color: var(--text-muted); }
         .case-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .tag { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.38rem 0.9rem; border: 1px solid var(--border-light); color: var(--text-muted); border-radius: 2px; }
+
+        /* Sections */
         .case-section { padding: 4rem 3rem; max-width: 900px; }
         .case-section.alt { background: var(--bg-mid); max-width: 100%; }
-        .case-section.alt .case-section-inner { max-width: 900px; }
-        .case-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--text-light); margin-bottom: 1.5rem; }
-        .case-section h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; color: var(--text-light); margin-bottom: 0.5rem; margin-top: 2rem; }
-        .case-section h3:first-of-type { margin-top: 0; }
+        .case-section.alt .inner { max-width: 900px; margin: 0 auto; }
+        .case-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--text-light); margin-bottom: 0.5rem; }
+        .case-section .section-caption { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.6; }
         .case-section p { font-size: 1rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.2rem; }
         .case-section strong { color: var(--text-light); font-weight: 400; }
         .case-section ul { list-style: none; padding: 0; }
         .case-section ul li { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; padding: 0.4rem 0; padding-left: 1.2rem; position: relative; }
         .case-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent-sage); }
-        .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0; }
+
+        /* Stats */
+        .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0; }
         .stat-box { padding: 1.5rem; border: 1px solid var(--border-light); border-radius: 3px; text-align: center; }
-        .stat-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--text-light); line-height: 1; }
+        .stat-num { font-family: var(--font-display); font-size: 2.4rem; font-weight: 300; color: var(--text-light); line-height: 1; }
         .stat-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.4rem; }
-        .method-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.25rem 0.7rem; background: rgba(122,155,111,0.12); color: var(--accent-sage); border-radius: 2px; margin-bottom: 0.75rem; }
-        .result-card { padding: 1.2rem 1.5rem; border: 1px solid var(--border-light); border-radius: 3px; margin-bottom: 0.75rem; }
-        .result-card p { margin-bottom: 0; font-size: 0.9rem; }
+
+        /* Pull quote */
+        .pull-quotes { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+        .pull-quote { padding: 1.5rem; border-left: 2px solid var(--accent-sage); background: rgba(122,155,111,0.06); border-radius: 0 3px 3px 0; }
+        .pull-quote p { font-family: var(--font-display); font-size: 1rem; font-style: italic; color: var(--text-light); line-height: 1.5; margin-bottom: 0.4rem; }
+        .pull-quote span { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-sage); }
+
+        /* Images */
+        .img-full { width: 100%; border-radius: 4px; border: 1px solid var(--border-light); display: block; margin: 1.5rem 0; }
+        .img-caption { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: -0.75rem; margin-bottom: 2rem; }
+        .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+        .img-grid-item img { width: 100%; border-radius: 4px; border: 1px solid var(--border-light); display: block; }
+        .img-grid-item .img-caption { margin-top: 0.5rem; margin-bottom: 0; }
+
+        /* Insight row */
+        .insight-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+        .insight-card { padding: 1.25rem 1.5rem; border: 1px solid var(--border-light); border-radius: 3px; }
+        .insight-card .ic-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-bronze); margin-bottom: 0.5rem; }
+        .insight-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0; line-height: 1.65; }
+
+        /* Crosslink */
         .crosslink { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; background: var(--paper); color: var(--ink); text-decoration: none; font-size: 0.83rem; font-weight: 500; letter-spacing: 0.04em; border-radius: 2px; transition: all 0.22s ease; margin-top: 1rem; }
         .crosslink:hover { background: var(--paper-warm); transform: translateY(-2px); }
+
         footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); }
         footer p { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--text-muted); }
-        @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; } .stat-row { grid-template-columns: 1fr 1fr; } .case-meta { gap: 1.2rem; } }
+
+        @media (max-width: 900px) {
+            nav { padding: 1rem 1.5rem; }
+            .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .stat-row { grid-template-columns: 1fr 1fr; }
+            .pull-quotes { grid-template-columns: 1fr; }
+            .img-grid { grid-template-columns: 1fr; }
+            .insight-row { grid-template-columns: 1fr; }
+            .case-meta { gap: 1.2rem; }
+        }
         @media (max-width: 500px) { .stat-row { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -67,10 +100,11 @@
         <a href="index.html#work" class="nav-back">← Back to Work</a>
     </nav>
 
+    <!-- HERO -->
     <section class="case-hero">
         <p class="case-eyebrow">UX Research · Tool Design · Neurodivergent UX</p>
         <h1 class="case-title">SpellStep</h1>
-        <p class="case-subtitle">Task initiation scaffolding for neurodivergent users — designed through 8 research methods.</p>
+        <p class="case-subtitle">A gamified task management app for neurodivergent users — designed to replace guilt with story.</p>
         <div class="case-meta">
             <div class="meta-item">
                 <span class="meta-label">Role</span>
@@ -81,236 +115,168 @@
                 <span class="meta-value">Figma Prototype</span>
             </div>
             <div class="meta-item">
-                <span class="meta-label">Type</span>
-                <span class="meta-value">Gamified Task Management App</span>
+                <span class="meta-label">Target Users</span>
+                <span class="meta-value">Students with ADHD & AuDHD</span>
             </div>
             <div class="meta-item">
-                <span class="meta-label">Target Users</span>
-                <span class="meta-value">Neurodivergent students (ADHD, AuDHD)</span>
+                <span class="meta-label">Methods</span>
+                <span class="meta-value">8 research methods</span>
             </div>
         </div>
         <div class="case-tags">
             <span class="tag">UX/UI Design</span>
-            <span class="tag">SDT Framework</span>
             <span class="tag">Neurodivergent UX</span>
-            <span class="tag">AI Companion</span>
-            <span class="tag">Behavioral Science</span>
+            <span class="tag">SDT Framework</span>
             <span class="tag">Usability Testing</span>
+            <span class="tag">AI Companion</span>
         </div>
     </section>
 
+    <!-- STATS -->
     <section class="case-section alt">
-        <div class="case-section-inner">
-            <h2>Overview</h2>
-            <p>
-                Neurodivergent students and professionals often struggle with task initiation — not due to laziness,
-                but due to cognitive overwhelm, perfectionism, and emotional friction that makes starting feel
-                impossible. SpellStep reimagines productivity through <strong>story-first design</strong>, transforming
-                tasks into a gentle narrative journey supported by emotional cues, an AI companion, and kindness-based motivation.
-            </p>
-            <p>
-                This case study documents the full research process: 8 methods, 5 user interviews, 2 rounds of
-                prototype testing, a tree test, an open card sort, heuristic evaluations of existing apps, and
-                literature grounded in Self-Determination Theory.
-            </p>
+        <div class="inner">
+            <div class="stat-row">
+                <div class="stat-box">
+                    <div class="stat-num">8</div>
+                    <div class="stat-label">Research methods</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">5</div>
+                    <div class="stat-label">Interviews<br>ADHD / AuDHD</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">86%</div>
+                    <div class="stat-label">Tree test<br>success rate</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">2</div>
+                    <div class="stat-label">Prototype test<br>rounds</div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- THE PROBLEM -->
     <section class="case-section">
-        <h2>Research at a Glance</h2>
-        <div class="stat-row">
-            <div class="stat-box">
-                <div class="stat-num">8</div>
-                <div class="stat-label">Research methods</div>
+        <h2>The Problem</h2>
+        <p class="section-caption">Existing focus apps are built for neurotypical users. For ADHD and AuDHD users, punishment-based streaks and cluttered UIs don't motivate — they cause shame, avoidance, and abandonment.</p>
+
+        <div class="pull-quotes">
+            <div class="pull-quote">
+                <p>"I hate starting things, but I can do 15 minutes."</p>
+                <span>P4 — Interview</span>
             </div>
-            <div class="stat-box">
-                <div class="stat-num">5</div>
-                <div class="stat-label">User interviews<br>(ADHD / AuDHD)</div>
+            <div class="pull-quote">
+                <p>"I hate cluttered tools."</p>
+                <span>P5 — Interview</span>
             </div>
-            <div class="stat-box">
-                <div class="stat-num">86%</div>
-                <div class="stat-label">Tree test<br>success rate</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-num">24</div>
-                <div class="stat-label">Cards sorted<br>(open card sort)</div>
+            <div class="pull-quote">
+                <p>"Having class deadlines is the only way I get stuff done."</p>
+                <span>P3 — Interview</span>
             </div>
         </div>
     </section>
 
+    <!-- AFFINITY MAP -->
     <section class="case-section alt">
-        <div class="case-section-inner">
-            <h2>The Problem</h2>
-            <p>
-                Existing focus apps like Forest and Focus Quest were built around neurotypical assumptions —
-                punishment-based streaks, reward-heavy systems, and cluttered UIs that create more cognitive load
-                than they reduce. For ADHD and AuDHD users, these systems backfire: missed streaks become shame,
-                long task lists become paralysis, and the app becomes another thing they're failing at.
-            </p>
-            <p>
-                Our interviews confirmed this. Participants described large assignments as <strong>"paralyzing"</strong>
-                because they didn't know how to begin. They procrastinated not out of laziness but out of confusion
-                about the first step. They relied on classmates and deadlines — not apps — to stay on track.
-            </p>
+        <div class="inner">
+            <h2>User Research</h2>
+            <p class="section-caption">5 semi-structured interviews with ADHD and AuDHD students. Sessions included app walkthroughs and post-task emotional reflection. Insights were synthesized via affinity diagramming.</p>
+            <img src="images/SpellStep Affinity Map.webp" alt="Affinity diagram showing 6 research themes: Task Initiation & Overwhelm, External Structure & Support, Environment Preferences, Motivation & Progress, Tool Usage & Preferences, Feedback & Emotional Safety" class="img-full">
+            <p class="img-caption">Affinity diagram — 6 themes across 5 participants</p>
+
+            <div class="insight-row">
+                <div class="insight-card">
+                    <div class="ic-label">Key finding</div>
+                    <p>Participants procrastinated not out of laziness but <strong>confusion about the first step</strong>. The barrier was initiation, not motivation.</p>
+                </div>
+                <div class="insight-card">
+                    <div class="ic-label">Key finding</div>
+                    <p>All participants preferred people over apps for accountability. <strong>No existing tool felt emotionally safe enough to return to after a missed day.</strong></p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- PERSONAS -->
     <section class="case-section">
-        <h2>Research Methods</h2>
-
-        <h3>Method 1 — Literature Review</h3>
-        <span class="method-tag">Foundational · 3 peer-reviewed articles</span>
-        <p>
-            We reviewed articles on gamified productivity, SDT, and ADHD cognitive regulation.
-            Key finding: <strong>reward-heavy systems can reduce intrinsic motivation</strong> in users who are
-            already overwhelmed. Apps work best when they support autonomy and emotional safety — not when they
-            pressure users with badges, points, or punishments. The "focus paradox" was also documented: apps
-            designed to help you focus can themselves become a source of distraction when overly complex.
-            This grounded our shift away from heavy gamification toward emotional clarity.
-        </p>
-
-        <h3>Method 2 — User Interviews</h3>
-        <span class="method-tag">Qualitative · 5 participants · ADHD / AuDHD</span>
-        <p>
-            We interviewed 5 neurodivergent students. Three sessions were fully in-person; two used a hybrid
-            format — Zoom Q&A followed by in-person usability testing of existing apps. Each session covered:
-            a semi-structured interview about task initiation and emotional experiences, a walkthrough of
-            Forest and Focus Quest, and a post-task emotional reflection. Sessions were recorded, transcribed
-            in Google Docs, and analyzed via affinity diagramming in Figma.
-        </p>
-        <p>Consistent themes across all 5 participants:</p>
-        <ul>
-            <li>Overwhelm from complex, multi-step tasks — described as "paralyzing"</li>
-            <li>Procrastination driven by confusion about the first step, not avoidance</li>
-            <li>Pattern of starting strong, then losing focus mid-task without external structure</li>
-            <li>Perfectionist tendencies that blocked initiation entirely</li>
-            <li>Emotional overwhelm tied to task visibility — seeing the full list increased anxiety</li>
-            <li>Reliance on classmates and deadlines rather than apps for accountability</li>
-        </ul>
-        <p>
-            During existing app testing, participants expressed <strong>genuine guilt when their Forest plant died</strong>
-            and found Focus Quest's dialogue "annoying rather than motivating" — reactions that directly shaped
-            SpellStep's no-punishment design principle.
-        </p>
-
-        <h3>Method 3 — Heuristic Evaluation</h3>
-        <span class="method-tag">Competitive Analysis · Forest & Focus Quest · UI Tenets & Trap Cards</span>
-        <p>Key issues found across both apps:</p>
-        <ul>
-            <li>Focus Quest: too many steps before starting, duplicate cues for the same action, rewards disconnected from real progress</li>
-            <li>Forest: unclear affordances, no centralized home screen, punitive visual when a plant died, unintuitive timer restart flow</li>
-            <li>Both apps made users rely on memory rather than guiding them with clear cues</li>
-            <li>Neither app had adequate emotional support — only emotional pressure</li>
-        </ul>
-
-        <h3>Method 4 — Cognitive Walkthrough</h3>
-        <span class="method-tag">Competitive Analysis · Forest & Focus Quest</span>
-        <p>
-            We performed first-time-user walkthroughs of both apps, logging confusion points at each step.
-            Focus Quest required too many choices upfront. Forest's timer restart was unintuitive. Both
-            created cognitive debt in users before any actual work began. This confirmed that SpellStep
-            needed simple paths, fewer steps, and zero guilt mechanics from the very first interaction.
-        </p>
-
-        <h3>Method 5 — Tree Testing</h3>
-        <span class="method-tag">Information Architecture · 10 tasks · UXArmy</span>
-        <p>
-            We ran a 10-task tree test with classmates to validate SpellStep's navigation structure before
-            building the prototype. Tasks covered the full feature set: goal setting, task chunking, companion
-            customization, progress map, and timer controls.
-        </p>
-        <div class="result-card">
-            <p><strong>Overall success rate: 86.25%</strong> — users could find the right location most of the time, confirming the navigation foundation was sound.</p>
+        <h2>User Personas</h2>
+        <p class="section-caption">Two personas synthesized from interview data — Sharon (the "before" state) and Alex (the "after" — what SpellStep enables).</p>
+        <div class="img-grid">
+            <div class="img-grid-item">
+                <img src="images/SpellStepSharonPersona.webp" alt="Sharon persona — 20 year old ADHD student, needs tasks broken into clear steps, pain points include task overwhelm and deadline dependency">
+                <p class="img-caption">Sharon — overwhelmed, deadline-dependent</p>
+            </div>
+            <div class="img-grid-item">
+                <img src="images/SpellStepAlexPersona.jpg" alt="Alex persona — 25 year old AuDHD student, needs gentle feedback and visual progress, pain points include perfection paralysis and task avoidance">
+                <p class="img-caption">Alex — perfection paralysis, avoidance spiral</p>
+            </div>
         </div>
-        <div class="result-card">
-            <p><strong>Directness rate: 67.5%</strong> — users needed extra clicks or backtracking, indicating some labels didn't match mental models.</p>
-        </div>
-        <div class="result-card">
-            <p><strong>Task 10 (edit companion personality): 37% success rate</strong> — worst performer. Narrative feature labels (Story, Character, Quests) caused confusion because they felt too similar without visual support.</p>
-        </div>
-        <p>
-            Structural, action-oriented features (timers, goals, chunking) performed best. Emotional and
-            tone-based features needed clearer, simpler naming — finding that directly shaped our section labels.
-        </p>
-
-        <h3>Method 6 — Open Card Sort</h3>
-        <span class="method-tag">Information Architecture · 24 cards · Optimal Workshop</span>
-        <p>
-            We ran an open card sort with classmates and peers completing the activity remotely. Participants
-            sorted 24 cards representing SpellStep's features and labeled their own groups. We added post-task
-            reflection questions after noticing early confusion, including an emotional state check ("How did
-            you feel while sorting?") and questions about unclear or overlapping cards.
-        </p>
-        <ul>
-            <li><strong>78–92% agreement:</strong> Planning, Steps, Rewards, Focus Sessions — grouped nearly identically across participants</li>
-            <li><strong>40–60% agreement:</strong> Progress tracking — placed under motivation, tasks, or rewards with no clear consensus</li>
-            <li><strong>12–25% agreement:</strong> Emotional support cards (encouragement, calming messages, self-talk) — highest confusion, lowest agreement</li>
-            <li><strong>56% of participants (9/16)</strong> marked at least 3 cards as hard to place due to unclear wording or overlapping meanings</li>
-        </ul>
-        <p>
-            User-created labels — "Getting Started," "Mini-Steps," "Daily Flow," "Motivation," "Focus Tools" —
-            directly informed SpellStep's section naming. Emotional support features needed the most rework.
-        </p>
-
-        <h3>Method 7 — Prototype Usability Testing</h3>
-        <span class="method-tag">Usability · 2 rounds · Figma · 4 participants total</span>
-        <p>
-            Two rounds of testing with a clickable Figma prototype. Participants completed 6 core tasks:
-            entering a goal, reviewing broken-down steps, prioritizing tasks, locking tasks, navigating to the
-            progress map, and interpreting companion guidance.
-        </p>
-        <p><strong>Round 1 (1 participant — rapid iteration):</strong></p>
-        <ul>
-            <li>Overall app intent and task chunking logic were understood</li>
-            <li>Priority star icon not recognized without supporting context</li>
-            <li>Companion pet wasn't noticed — no visual cues signaled its presence</li>
-            <li>Duplicate "Begin Quest" button on the breakdown page caused confusion</li>
-        </ul>
-        <p>Changes applied: added pet icons, improved button labels, added clear lock and star icons with better affordance.</p>
-        <p><strong>Round 2 (3 participants — validation):</strong></p>
-        <ul>
-            <li>Overall flow (Onboarding → Choose Pet → Breakdown → Progress) made sense to all 3</li>
-            <li>Task chunking and lock feature conceptually understood</li>
-            <li>"Decide for Me" not understood by any participant — 0% comprehension</li>
-            <li>Pet dialogues felt vague and unhelpful — users wanted actionable guidance</li>
-            <li>Task Breakdown page felt incomplete; users wanted sub-steps within each chunked task</li>
-            <li>Progress Map lacked context — users didn't understand what they were looking at</li>
-            <li>Prioritization arrows were missed; star icon still didn't immediately read as "priority"</li>
-        </ul>
-
-        <h3>Method 8 — Personas & Journey Mapping</h3>
-        <span class="method-tag">Synthesis · Figma & Miro</span>
-        <p>
-            We built two personas from our combined research: <strong>Sharon</strong> (the "before" state —
-            overwhelm, task overload, avoidance) and <strong>Alex</strong> (the "after" — guided steps,
-            emotional reassurance, small wins). Journey maps in Miro visualized the emotional arc from
-            guilt and perfectionism through gentle nudges, visual chunking, and eventual task completion.
-            Both personas were used as reference checkpoints throughout design decisions.
-        </p>
     </section>
 
+    <!-- JOURNEY MAPS -->
     <section class="case-section alt">
-        <div class="case-section-inner">
-            <h2>Design Decisions Traced to Research</h2>
+        <div class="inner">
+            <h2>Journey Maps</h2>
+            <p class="section-caption">Sharon's journey shows the chaos without SpellStep — task overload, tool-switching, avoidance, deadline panic. Alex's shows how SpellStep intervenes at each emotional low point.</p>
+
+            <img src="images/SpellStepJourneyMap1.png" alt="Sharon's journey map showing emotional arc from task overload through tool-switching, avoidance spiral, and last-minute scramble — with design opportunities at each stage" class="img-full">
+            <p class="img-caption">Sharon — Task Overload → Tool-switching → Avoidance → Last-minute Scramble</p>
+
+            <img src="images/SpellStepJourneyMap2.png" alt="Alex's journey map showing perfection paralysis, planning but not starting, task avoidance, and finally a kind spark of momentum from SpellStep's companion" class="img-full">
+            <p class="img-caption">Alex — Perfection Paralysis → Planning Loop → Avoidance → Kind Spark of Momentum</p>
+        </div>
+    </section>
+
+    <!-- RESEARCH METHODS -->
+    <section class="case-section">
+        <h2>Additional Methods</h2>
+        <p class="section-caption">Beyond interviews and journey mapping, the research included competitive analysis, IA testing, and two rounds of prototype validation.</p>
+
+        <div class="insight-row">
+            <div class="insight-card">
+                <div class="ic-label">Heuristic Evaluation</div>
+                <p>Evaluated Forest and Focus Quest using UI Tenets & Trap Cards. Forest's plant-death mechanic caused genuine guilt. Focus Quest's rewards felt irrelevant to actual work.</p>
+            </div>
+            <div class="insight-card">
+                <div class="ic-label">Tree Testing — UXArmy</div>
+                <p><strong>86.25% success rate</strong>, but directness dropped to 67.5%. Task 10 (edit companion personality) failed at 37% — narrative labels confused users without visual support.</p>
+            </div>
+            <div class="insight-card">
+                <div class="ic-label">Open Card Sort — Optimal Workshop</div>
+                <p>24 cards, remote participants. Structural features (steps, timers, goals) had 78–92% agreement. Emotional support features scored 12–25% — users had no shared mental model for them.</p>
+            </div>
+            <div class="insight-card">
+                <div class="ic-label">Prototype Testing — 2 Rounds</div>
+                <p>Round 1 (1 participant) exposed missing pet icons and a confusing duplicate button. Round 2 (3 participants) confirmed fixes — and revealed "Decide for Me" had 0% comprehension.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESIGN DECISIONS -->
+    <section class="case-section alt">
+        <div class="inner">
+            <h2>Design Decisions</h2>
+            <p class="section-caption">Every feature traces back to a specific research finding.</p>
             <ul>
-                <li><strong>Task chunking into "spell steps"</strong> — interview finding: users didn't know how to start, not that they lacked motivation</li>
-                <li><strong>No punishment for inactivity</strong> — SDT literature + Forest usability: guilt-based mechanics reduce motivation in ND users</li>
-                <li><strong>Ambient companion over dialogue popups</strong> — tree test + prototype Round 2: intrusive dialogue annoyed users</li>
-                <li><strong>Visual progress map instead of checklist</strong> — card sort: "progress" had no single mental model; narrative framing gave it emotional meaning</li>
-                <li><strong>Renamed emotional support features</strong> — card sort: 12–25% agreement on tone-based labels; simplified to plain language</li>
-                <li><strong>"Decide for Me" removed and reframed</strong> — prototype Round 2: 0% comprehension; needed complete rethink of affordance and label</li>
+                <li><strong>Task chunking into "spell steps"</strong> — interviews: users were stuck on the first step, not unmotivated</li>
+                <li><strong>No punishment for inactivity</strong> — SDT literature + Forest testing: guilt mechanics caused abandonment in ND users</li>
+                <li><strong>Plain-language emotional labels</strong> — card sort: emotional support features scored lowest (12–25% agreement) — users needed simpler, more predictable naming</li>
+                <li><strong>Ambient companion over dialogue popups</strong> — prototype Round 2: intrusive dialogue was "annoying rather than motivating"</li>
+                <li><strong>"Decide for Me" removed</strong> — prototype Round 2: 0% comprehension across 3 participants</li>
+                <li><strong>Visual progress map</strong> — card sort: "progress" had no consistent mental model; narrative framing made it emotionally legible</li>
             </ul>
         </div>
     </section>
 
+    <!-- KEY LEARNINGS -->
     <section class="case-section">
         <h2>Key Learnings</h2>
         <ul>
-            <li><strong>Emotional features are the hardest to name</strong> — structural labels (timer, steps, goals) are intuitive; emotional UX labels need plain language and visual support</li>
-            <li><strong>Punishment-avoidance is a design requirement, not a nice-to-have</strong> — for ND users, guilt mechanics don't motivate; they cause abandonment</li>
-            <li><strong>Rapid iteration with 1 participant reveals major issues</strong> — Round 1's single-participant test exposed the pet and icon problems that Round 2 confirmed as fixed</li>
-            <li><strong>Tree testing before prototyping saves time</strong> — catching label confusion in the navigation structure early prevented those same issues appearing in the prototype</li>
-            <li><strong>Card sort user labels are design language</strong> — "Getting Started" and "Mini-Steps" came from participants, not the team; listening to those words made the app feel more natural</li>
+            <li><strong>Emotional features are the hardest to name</strong> — structural labels are intuitive; tone-based features need plain language and visual anchors</li>
+            <li><strong>Rapid 1-participant testing reveals the biggest issues fastest</strong> — Round 1 exposed the pet and icon problems before they compounded</li>
+            <li><strong>Punishment-avoidance is a design requirement for ND users</strong> — not a nice-to-have. Guilt mechanics don't motivate; they cause abandonment</li>
+            <li><strong>Card sort user labels are better than team-invented ones</strong> — "Getting Started" and "Mini-Steps" came from participants, not us</li>
         </ul>
         <a href="spellstep-narrative.html" class="crosslink">View Narrative Design Case Study →</a>
     </section>
