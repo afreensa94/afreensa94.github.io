@@ -47,10 +47,14 @@
         .case-section ul { list-style: none; padding: 0; }
         .case-section ul li { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; padding: 0.4rem 0; padding-left: 1.2rem; position: relative; }
         .case-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent-sage); }
+        .img-frame { background: #0E1420; border: 1px solid var(--border-light); border-radius: 6px; padding: 1.25rem; margin: 1.5rem 0 0.5rem; }
+        .img-frame img { width: 100%; border-radius: 3px; display: block; filter: grayscale(20%) contrast(1.05); }
+        .img-frame.live img { filter: none; }
         .img-full { width: 100%; border-radius: 4px; border: 1px solid var(--border-light); display: block; margin: 1.5rem 0 0.5rem; }
         .img-caption { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
         .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
         .img-grid-item img { width: 100%; border-radius: 4px; border: 1px solid var(--border-light); display: block; }
+        .img-grid-item .img-frame { margin: 0; }
         .img-grid-item .img-caption { margin-top: 0.5rem; margin-bottom: 0; }
         .callout { padding: 1.5rem 2rem; border-left: 2px solid var(--accent-bronze); background: rgba(184,132,90,0.06); border-radius: 0 3px 3px 0; margin: 2rem 0; }
         .callout p { font-family: var(--font-display); font-size: 1.05rem; font-style: italic; color: var(--text-light); line-height: 1.6; margin-bottom: 0; }
@@ -137,32 +141,44 @@
             </div>
 
             <h3>Initial Concept</h3>
-            <img src="images/Redress_FigmaSketch.webp" alt="Figma concept sketch of the Redress dialogue box system showing character portrait, name tab, and dialogue area layout" class="img-full">
+            <div class="img-frame">
+                <img src="images/Redress_FigmaSketch.webp" alt="Figma concept sketch of the Redress dialogue box system showing character portrait, name tab, and dialogue area layout">
+            </div>
             <p class="img-caption">Figma concept sketch — dialogue box layout with character portrait, name tab, and text area</p>
 
             <h3>Implemented — Character Switching in Action</h3>
             <div class="img-grid">
                 <div class="img-grid-item">
-                    <img src="images/Redress_ErikaDialogueBox.jpg" alt="Live Twine game showing Erika's dialogue box — character portrait on left, name tab at top, dialogue text on right with Next button">
+                    <div class="img-frame live">
+                        <img src="images/Redress_ErikaDialogueBox.jpg" alt="Live Twine game showing Erika's dialogue box — character portrait on left, name tab at top, dialogue text on right with Next button">
+                    </div>
                     <p class="img-caption">Erika's dialogue box — mentor character, warm layout</p>
                 </div>
                 <div class="img-grid-item">
-                    <img src="images/Redress_SkylaDB.jpg" alt="Live Twine game showing Skyla's dialogue box — different character portrait and name tag, demonstrating the character switching system">
+                    <div class="img-frame live">
+                        <img src="images/Redress_SkylaDB.jpg" alt="Live Twine game showing Skyla's dialogue box — different character portrait and name tag, demonstrating the character switching system">
+                    </div>
                     <p class="img-caption">Skyla's dialogue box — layout and portrait adapt to speaker</p>
                 </div>
             </div>
 
-            <img src="images/Redress_Initial_implementation.jpg" alt="Live Twine game showing Benji's dialogue box with inline player variable $patron01_Name Simon rendered in narrative prose, demonstrating dynamic name substitution" class="img-full">
+            <div class="img-frame live">
+                <img src="images/Redress_Initial_implementation.jpg" alt="Live Twine game showing Benji's dialogue box with inline player variable $patron01_Name Simon rendered in narrative prose, demonstrating dynamic name substitution">
+            </div>
             <p class="img-caption">Benji's dialogue box — inline player-facing variables ($patron01_Name) render dynamically in narrative prose</p>
 
             <h3>Passage Architecture & Code</h3>
             <div class="img-grid">
                 <div class="img-grid-item">
-                    <img src="images/Redress_Twine_coding.jpg" alt="Twine passage map showing branching node structure with Continue, Next, and Dialogue Continues passages — custom CSS visible in Story Stylesheet panel">
+                    <div class="img-frame">
+                        <img src="images/Redress_Twine_coding.jpg" alt="Twine passage map showing branching node structure with Continue, Next, and Dialogue Continues passages — custom CSS visible in Story Stylesheet panel">
+                    </div>
                     <p class="img-caption">Twine passage flow — reset step logic on entry, dialogue-wrapper components, continuation branching</p>
                 </div>
                 <div class="img-grid-item">
-                    <img src="images/Redress_DB_HTMLCSS.jpg" alt="Twine editor showing Story Stylesheet with .box-text CSS class, Story JavaScript with jQuery UI bar removal, and passage code with SugarCube macros">
+                    <div class="img-frame">
+                        <img src="images/Redress_DB_HTMLCSS.jpg" alt="Twine editor showing Story Stylesheet with .box-text CSS class, Story JavaScript with jQuery UI bar removal, and passage code with SugarCube macros">
+                    </div>
                     <p class="img-caption">Custom CSS (flex portrait layout, italic text), SugarCube step counter, JS overrides removing default Twine UI chrome</p>
                 </div>
             </div>
@@ -189,24 +205,34 @@
         <h2>Document Analysis System</h2>
         <p class="section-caption">Beyond the dialogue system, I designed the full document analysis experience — the core gameplay loop where players examine real archival evidence. This included companion-guided onboarding, annotated document views, question overlays, feedback states, and a completion screen.</p>
 
-        <img src="images/Analysis_intro_01.png" alt="Redress wireframe showing elephant companion character introducing the document analysis task with dialogue bubble on dark background with sidebar navigation" class="img-full">
+        <div class="img-frame">
+            <img src="images/Analysis_intro_01.png" alt="Redress wireframe showing elephant companion character introducing the document analysis task with dialogue bubble on dark background with sidebar navigation">
+        </div>
         <p class="img-caption">Companion onboarding — elephant character guides players into the document analysis task</p>
 
-        <img src="images/Analysis_Questions01.png" alt="Redress wireframe showing document analysis screen with historical document on left, question overlay in center, and navigation sidebar on right" class="img-full">
+        <div class="img-frame">
+            <img src="images/Analysis_Questions01.png" alt="Redress wireframe showing document analysis screen with historical document on left, question overlay in center, and navigation sidebar on right">
+        </div>
         <p class="img-caption">Document analysis view — historical document with question overlay, sidebar navigation (Map, Inventory, Save, Restart, Settings, Resources)</p>
 
         <div class="img-grid">
             <div class="img-grid-item">
-                <img src="images/Analysis_Questions01_fdbk01.png" alt="Redress wireframe showing first feedback state after answering a document analysis question">
+                <div class="img-frame">
+                    <img src="images/Analysis_Questions01_fdbk01.png" alt="Redress wireframe showing first feedback state after answering a document analysis question">
+                </div>
                 <p class="img-caption">Feedback state 1 — response to player answer</p>
             </div>
             <div class="img-grid-item">
-                <img src="images/Analysis_Questions01_fdbk02.png" alt="Redress wireframe showing second feedback state with additional contextual information">
+                <div class="img-frame">
+                    <img src="images/Analysis_Questions01_fdbk02.png" alt="Redress wireframe showing second feedback state with additional contextual information">
+                </div>
                 <p class="img-caption">Feedback state 2 — additional historical context</p>
             </div>
         </div>
 
-        <img src="images/Analysis_Questions_CompletionScreen01.png" alt="Redress wireframe showing completion screen after finishing a document analysis module" class="img-full">
+        <div class="img-frame">
+            <img src="images/Analysis_Questions_CompletionScreen01.png" alt="Redress wireframe showing completion screen after finishing a document analysis module">
+        </div>
         <p class="img-caption">Completion screen — end of document analysis module</p>
     </section>
 
@@ -215,7 +241,9 @@
         <div class="inner">
             <h2>Codex — Government Officials Directory</h2>
             <p class="section-caption">Players can access a reference directory of historical figures while playing — giving context without breaking narrative immersion. I designed the codex as a diegetic UI element: something that exists within the world of the game.</p>
-            <img src="images/Government Officials_Directory01.png" alt="Redress wireframe showing the Government Officials codex screen — a two-panel layout with a historical letter on the left and a directory of official portraits and names on the right, with sidebar navigation" class="img-full">
+            <div class="img-frame">
+                <img src="images/Government Officials_Directory01.png" alt="Redress wireframe showing the Government Officials codex screen — a two-panel layout with a historical letter on the left and a directory of official portraits and names on the right, with sidebar navigation">
+            </div>
             <p class="img-caption">Government Officials Directory — in-game codex for historical figures referenced in archival documents</p>
         </div>
     </section>
@@ -228,11 +256,15 @@
 
             <div class="img-grid">
                 <div class="img-grid-item">
-                    <img src="images/Tooltips01.png" alt="First tooltip state showing initial UI guidance overlay on the document analysis screen">
+                    <div class="img-frame">
+                        <img src="images/Tooltips01.png" alt="First tooltip state showing initial UI guidance overlay on the document analysis screen">
+                    </div>
                     <p class="img-caption">Tooltip state 1 — initial orientation</p>
                 </div>
                 <div class="img-grid-item">
-                    <img src="images/Tooltips03.png" alt="Third tooltip state showing progressive UI guidance revealing additional interface elements">
+                    <div class="img-frame">
+                        <img src="images/Tooltips03.png" alt="Third tooltip state showing progressive UI guidance revealing additional interface elements">
+                    </div>
                     <p class="img-caption">Tooltip state 3 — progressive reveal</p>
                 </div>
             </div>
