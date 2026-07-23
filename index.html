@@ -564,6 +564,48 @@
         }
 
         /* ============================================
+           SOLO SHIPS
+        ============================================ */
+        .ship-item { display: block; }
+
+        .ship-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.45rem;
+            gap: 1rem;
+        }
+
+        .ship-status {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 2px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .ship-live {
+            background: rgba(122,155,111,0.15);
+            color: var(--accent-sage);
+            border: 1px solid rgba(122,155,111,0.3);
+        }
+
+        .ship-progress {
+            background: rgba(184,132,90,0.12);
+            color: var(--accent-bronze);
+            border: 1px solid rgba(184,132,90,0.25);
+        }
+
+        .ship-url {
+            font-family: var(--font-mono);
+            font-size: 0.72rem !important;
+            color: var(--accent-sage) !important;
+            margin-top: 0.75rem !important;
+            opacity: 0.8;
+        }
+
+        /* ============================================
            ABOUT
         ============================================ */
         .about-grid {
@@ -777,6 +819,7 @@
             <li><a href="Sana-Afreen-Resume.pdf" download>Resume ↓</a></li>
             <li><a href="#research">Research</a></li>
             <li><a href="#work">Work</a></li>
+            <li><a href="#ships">Ships</a></li>
             <li><a href="#narrative">Narrative</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -1113,6 +1156,43 @@
                     <p>A papercraft narrative translating CPTSD into interactive mechanics — environmental
                     storytelling where the house itself is the story. Case study coming soon.</p>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLO SHIPS -->
+    <section id="ships">
+        <div class="section-header">
+            <span class="section-label">Solo Ships</span>
+            <h2 class="section-title">Research That Ships</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="narrative-grid">
+            <div class="narrative-text">
+                <p>
+                    I tend to write things down before I build them. Both of these started
+                    as long documents — working out why they should exist and what they
+                    wouldn't do. The build came after. They're live now, and both projects
+                    are in their first iteration.
+                </p>
+            </div>
+            <div class="narrative-items">
+                <a href="https://the-compass-five.vercel.app/" target="_blank" rel="noopener" class="narrative-item ship-item reveal" style="text-decoration:none;color:inherit;">
+                    <div class="ship-header">
+                        <h4>The Compass ↗</h4>
+                        <span class="ship-status ship-live">Live · Iteration 1</span>
+                    </div>
+                    <p>A trauma-informed, ADHD-aware task prioritizer that reads your nervous system before it reads your to-do list. The morning check-in asks what would eat at you if today was wasted — not what's on your list. AI-driven task sequencing adapts to your regulation state, not just your priority order.</p>
+                    <p class="ship-url">the-compass-five.vercel.app</p>
+                </a>
+                <div class="narrative-item ship-item reveal">
+                    <div class="ship-header">
+                        <h4>The Listening Room</h4>
+                        <span class="ship-status ship-progress">In Progress</span>
+                    </div>
+                    <p>An anti-algorithm music player designed around intimacy and artist ethics. No recommendations engine. No engagement metrics. Just a room, a record, and the belief that artist revenue is sacred. Built on the premise that music software should serve the relationship between listener and artist — not exploit it.</p>
+                </div>
             </div>
         </div>
     </section>
