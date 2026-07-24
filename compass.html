@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Compass — Sana Afreen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #1C2432; --bg-mid: #232D3F; --paper: #F0E8DC; --paper-warm: #EDE0CF;
+            --ink: #1C2432; --ink-muted: #4A5568; --text-light: #F0E8DC; --text-muted: #9AAEC1;
+            --accent-sage: #7A9B6F; --accent-bronze: #B8845A;
+            --border-light: rgba(240,232,220,0.10);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+            --font-mono: 'DM Mono', monospace;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-deep); color: var(--text-light); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(28,36,50,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border-light); }
+        .nav-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 300; letter-spacing: 0.06em; color: var(--text-light); text-decoration: none; }
+        .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s; }
+        .nav-back:hover { color: var(--text-light); }
+
+        .case-hero { padding: 10rem 3rem 4rem; max-width: 900px; }
+        .case-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-sage); margin-bottom: 1.5rem; }
+        .case-title { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 0.95; color: var(--text-light); margin-bottom: 1.5rem; }
+        .case-subtitle { font-family: var(--font-display); font-size: 1.15rem; font-style: italic; color: var(--accent-bronze); margin-bottom: 2rem; }
+        .case-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; }
+        .meta-item { display: flex; flex-direction: column; gap: 0.3rem; }
+        .meta-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-sage); }
+        .meta-value { font-size: 0.9rem; color: var(--text-muted); }
+        .case-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.38rem 0.9rem; border: 1px solid var(--border-light); color: var(--text-muted); border-radius: 2px; }
+
+        .case-section { padding: 4rem 3rem; max-width: 900px; }
+        .case-section.alt { background: var(--bg-mid); max-width: 100%; }
+        .case-section.alt .inner { max-width: 900px; margin: 0 auto; }
+        .case-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--text-light); margin-bottom: 0.5rem; }
+        .case-section .section-caption { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.6; }
+        .case-section p { font-size: 1rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.2rem; }
+        .case-section strong { color: var(--text-light); font-weight: 400; }
+        .case-section ul { list-style: none; padding: 0; }
+        .case-section ul li { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; padding: 0.4rem 0; padding-left: 1.2rem; position: relative; }
+        .case-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent-sage); }
+
+        .decision-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-bronze); margin-bottom: 0.75rem; }
+
+        .img-full { width: 100%; border-radius: 4px; border: 1px solid var(--border-light); display: block; margin: 1.5rem 0; }
+        .img-caption { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: -0.75rem; margin-bottom: 2rem; }
+
+        .insight-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+        .insight-card { padding: 1.25rem 1.5rem; border: 1px solid var(--border-light); border-radius: 3px; }
+        .insight-card .ic-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-bronze); margin-bottom: 0.5rem; }
+        .insight-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0; line-height: 1.65; }
+
+        .link-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+        .crosslink { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; background: var(--paper); color: var(--ink); text-decoration: none; font-size: 0.83rem; font-weight: 500; letter-spacing: 0.04em; border-radius: 2px; transition: all 0.22s ease; }
+        .crosslink:hover { background: var(--paper-warm); transform: translateY(-2px); }
+        .crosslink.ghost { background: transparent; color: var(--text-muted); border: 1px solid var(--border-light); }
+        .crosslink.ghost:hover { color: var(--text-light); border-color: rgba(240,232,220,0.25); }
+
+        footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); }
+        footer p { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--text-muted); }
+
+        @media (max-width: 900px) {
+            nav { padding: 1rem 1.5rem; }
+            .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .insight-row { grid-template-columns: 1fr; }
+            .case-meta { gap: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">Sana Afreen</a>
+        <a href="index.html#ships" class="nav-back">← Back to Solo Ships</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="case-hero">
+        <p class="case-eyebrow">Trauma-Informed UX · ADHD-Aware · Solo Ship</p>
+        <h1 class="case-title">The Compass</h1>
+        <p class="case-subtitle">A task prioritizer that reads your nervous system before it reads your to-do list.</p>
+        <div class="case-meta">
+            <div class="meta-item">
+                <span class="meta-label">Role</span>
+                <span class="meta-value">Solo Designer & Builder</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Status</span>
+                <span class="meta-value">Live · Iteration 1</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Stack</span>
+                <span class="meta-value">React · Vite · Claude API</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Users</span>
+                <span class="meta-value">ADHD, AuDHD, Trauma Survivors</span>
+            </div>
+        </div>
+        <div class="case-tags">
+            <span class="tag">Affective Design</span>
+            <span class="tag">Trauma-Informed UX</span>
+            <span class="tag">Cognitive Load Theory</span>
+            <span class="tag">AI Integration</span>
+            <span class="tag">Self-Determination Theory</span>
+        </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="case-section alt">
+        <div class="inner">
+            <h2>The Problem</h2>
+            <p class="section-caption">Why most productivity tools fail before you've done anything</p>
+            <p>Most productivity tools share the same design assumption: you arrive regulated. Open the app, see the list, start working. That sequence treats attention and emotional state as fixed variables — something you bring to the task, not something the tool helps you navigate.</p>
+            <p>For people with ADHD and trauma histories, that assumption fails before the first screen loads. <strong>The list itself becomes the obstacle.</strong> Seeing everything you haven't done, all at once, triggers the exact nervous system response that makes starting impossible.</p>
+        </div>
+    </section>
+
+    <!-- DECISION 1 -->
+    <section class="case-section">
+        <p class="decision-label">Design Decision 01</p>
+        <h2>The check-in reads your state before your tasks</h2>
+        <p>The Compass opens with four questions — rotating each session, conversational, never clinical — that read body state, social obligation, dread, and avoidance before a single task appears. The questions never ask "what are your tasks." That comes after.</p>
+        <p>This sequencing is intentional: <strong>knowing your regulation state changes which task surfaces first</strong>, not just what priority level it's been assigned. A person in a dissociated fog needs a different first task than someone who's sharp and caffeinated — even if their list is identical.</p>
+
+        <img src="images/compass-checkin.jpg" alt="The Compass check-in screen — 'If today ended and you did nothing, what would eat at you tomorrow?'" class="img-full">
+        <p class="img-caption">One of four rotating check-in questions. The four-dot progress indicator is the only structure — no numbers, no percentages.</p>
+    </section>
+
+    <!-- DECISION 2 -->
+    <section class="case-section alt">
+        <div class="inner">
+            <p class="decision-label">Design Decision 02</p>
+            <h2>One card. AI reasoning visible.</h2>
+            <p>After the check-in, you see one task card: the name, its energy weight, a time estimate, and the AI's reasoning for why this task is first given your current state. The reasoning is visible — not a black box.</p>
+            <p>A list is a to-do and a verdict on how behind you are at the same time. <strong>A single card with a reason is just a question.</strong> This comes directly from Cognitive Load Theory: reduce the decision surface, reduce the activation cost.</p>
+            <p>The regulation state label — 🌱 Steady, or fog, or buzzing — stays visible throughout. The AI calibrates its language to match: a "foggy" session gets gentler framing; a "sharp" session gets direct task sequencing.</p>
+
+            <img src="images/compass-taskcard.jpg" alt="The Compass task card showing regulation state, AI reasoning, and three action options" class="img-full">
+            <p class="img-caption">The full task card view: regulation state, AI reasoning in italics, and three action options — start, swap, or defer without shame.</p>
+        </div>
+    </section>
+
+    <!-- DECISION 3 -->
+    <section class="case-section">
+        <p class="decision-label">Design Decision 03</p>
+        <h2>"Can't today" is not failure</h2>
+        <p>The task card offers three options: start the session, swap for a different task, or <strong>"Can't today."</strong> Choosing "Can't today" moves the task forward to tomorrow — no streak break, no guilt UI, no log of how many times you've deferred it.</p>
+        <p>The system treats it as information, not a deficit. The framing is: today was harder than the task. This is where trauma-informed design shows up most concretely — in what the app <em>refuses to say.</em></p>
+
+        <div class="insight-row">
+            <div class="insight-card">
+                <p class="ic-label">Standard tool</p>
+                <p>"3 tasks overdue. You have 7 items remaining."</p>
+            </div>
+            <div class="insight-card">
+                <p class="ic-label">The Compass</p>
+                <p>"Can't today" moves it forward. No record kept. No streak broken.</p>
+            </div>
+            <div class="insight-card">
+                <p class="ic-label">Design principle</p>
+                <p>Shame mechanics don't motivate ADHD and trauma-affected users — they cause abandonment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ITERATION 2 -->
+    <section class="case-section alt">
+        <div class="inner">
+            <h2>Where Iteration 2 Is Going</h2>
+            <p class="section-caption">Iteration 1 established the structure. Iteration 2 earns it with data.</p>
+            <ul>
+                <li><strong>Playtest-informed check-in redesign</strong> — current questions were built on intuition. Iteration 2 runs formal playtesting and rebuilds them as validated Likert and multiselect formats grounded in the research.</li>
+                <li><strong>Deeper AI integration</strong> — rather than sequencing logic applied after the fact, the model reasons across the full task list given your regulation state and explains its thinking in real time.</li>
+                <li><strong>Five developed mini-games</strong> — the in-between palate cleansers are currently placeholders. Iteration 2 builds five fully designed, low-stimulation games intended to actually shift your nervous system before the next task begins.</li>
+            </ul>
+
+            <div class="link-row">
+                <a href="https://the-compass-five.vercel.app/" target="_blank" rel="noopener" class="crosslink">Try It Live ↗</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Sana Afreen — Designed & Built with Intent</p>
+        <p>HCI · Trauma-Informed Design · Affective Systems</p>
+    </footer>
+</body>
+</html>
