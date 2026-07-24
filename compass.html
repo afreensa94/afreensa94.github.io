@@ -37,9 +37,10 @@
         .case-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .tag { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.38rem 0.9rem; border: 1px solid var(--border-light); color: var(--text-muted); border-radius: 2px; }
 
-        .case-section { padding: 4rem 3rem; max-width: 900px; margin: 0 auto; }
-        .case-section.alt { background: var(--bg-mid); max-width: 100%; }
-        .case-section.alt .inner { max-width: 900px; margin: 0 auto; }
+        .case-section { padding: 4rem 0; max-width: 100%; }
+        .case-section.alt { background: var(--bg-mid); }
+        .case-section .inner,
+        .case-section.alt .inner { max-width: 900px; margin: 0 auto; padding: 0 3rem; }
         .case-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--text-light); margin-bottom: 0.5rem; }
         .case-section .section-caption { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.6; }
         .case-section p { font-size: 1rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.2rem; }
@@ -125,13 +126,15 @@
 
     <!-- DECISION 1 -->
     <section class="case-section">
-        <p class="decision-label">Design Decision 01</p>
-        <h2>The check-in reads your state before your tasks</h2>
-        <p>The Compass opens with four questions — rotating each session, conversational, never clinical — that read body state, social obligation, dread, and avoidance before a single task appears. The questions never ask "what are your tasks." That comes after.</p>
-        <p>This sequencing is intentional: <strong>knowing your regulation state changes which task surfaces first</strong>, not just what priority level it's been assigned. A person in a dissociated fog needs a different first task than someone who's sharp and caffeinated — even if their list is identical.</p>
+        <div class="inner">
+            <p class="decision-label">Design Decision 01</p>
+            <h2>The check-in reads your state before your tasks</h2>
+            <p>The Compass opens with four questions — rotating each session, conversational, never clinical — that read body state, social obligation, dread, and avoidance before a single task appears. The questions never ask "what are your tasks." That comes after.</p>
+            <p>This sequencing is intentional: <strong>knowing your regulation state changes which task surfaces first</strong>, not just what priority level it's been assigned. A person in a dissociated fog needs a different first task than someone who's sharp and caffeinated — even if their list is identical.</p>
 
-        <img src="images/compass-checkin.jpg" alt="The Compass check-in screen — 'If today ended and you did nothing, what would eat at you tomorrow?'" class="img-full">
-        <p class="img-caption">One of four rotating check-in questions. The four-dot progress indicator is the only structure — no numbers, no percentages.</p>
+            <img src="images/compass-checkin.jpg" alt="The Compass check-in screen — 'If today ended and you did nothing, what would eat at you tomorrow?'" class="img-full">
+            <p class="img-caption">One of four rotating check-in questions. The four-dot progress indicator is the only structure — no numbers, no percentages.</p>
+        </div>
     </section>
 
     <!-- DECISION 2 -->
@@ -150,23 +153,25 @@
 
     <!-- DECISION 3 -->
     <section class="case-section">
-        <p class="decision-label">Design Decision 03</p>
-        <h2>"Can't today" is not failure</h2>
-        <p>The task card offers three options: start the session, swap for a different task, or <strong>"Can't today."</strong> Choosing "Can't today" moves the task forward to tomorrow — no streak break, no guilt UI, no log of how many times you've deferred it.</p>
-        <p>The system treats it as information, not a deficit. The framing is: today was harder than the task. This is where trauma-informed design shows up most concretely — in what the app <em>refuses to say.</em></p>
+        <div class="inner">
+            <p class="decision-label">Design Decision 03</p>
+            <h2>"Can't today" is not failure</h2>
+            <p>The task card offers three options: start the session, swap for a different task, or <strong>"Can't today."</strong> Choosing "Can't today" moves the task forward to tomorrow — no streak break, no guilt UI, no log of how many times you've deferred it.</p>
+            <p>The system treats it as information, not a deficit. The framing is: today was harder than the task. This is where trauma-informed design shows up most concretely — in what the app <em>refuses to say.</em></p>
 
-        <div class="insight-row">
-            <div class="insight-card">
-                <p class="ic-label">Standard tool</p>
-                <p>"3 tasks overdue. You have 7 items remaining."</p>
-            </div>
-            <div class="insight-card">
-                <p class="ic-label">The Compass</p>
-                <p>"Can't today" moves it forward. No record kept. No streak broken.</p>
-            </div>
-            <div class="insight-card">
-                <p class="ic-label">Design principle</p>
-                <p>Shame mechanics don't motivate ADHD and trauma-affected users — they cause abandonment.</p>
+            <div class="insight-row">
+                <div class="insight-card">
+                    <p class="ic-label">Standard tool</p>
+                    <p>"3 tasks overdue. You have 7 items remaining."</p>
+                </div>
+                <div class="insight-card">
+                    <p class="ic-label">The Compass</p>
+                    <p>"Can't today" moves it forward. No record kept. No streak broken.</p>
+                </div>
+                <div class="insight-card">
+                    <p class="ic-label">Design principle</p>
+                    <p>Shame mechanics don't motivate ADHD and trauma-affected users — they cause abandonment.</p>
+                </div>
             </div>
         </div>
     </section>
