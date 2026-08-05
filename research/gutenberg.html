@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Gutenberg — Sana Afreen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FBF3E3; --card: #FFFCF5; --terracotta: #C9622E; --terracotta-deep: #A44A1E;
+    --teal: #2E6F5E; --teal-tint: #DCEAE4; --ochre: #E8A33D; --ochre-tint: #FBECD1;
+    --ink: #3D2B1F; --ink-soft: #6B5646; --ink-mute: #9C8B78; --line: #EBD9C3;
+    --font-display: 'Fraunces', Georgia, serif; --font-body: 'Libre Franklin', system-ui, sans-serif;
+  }
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 22px 22px; color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(251,243,227,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-logo { font-family: var(--font-display); font-weight: 700; font-style: italic; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+  .nav-back { color: var(--ink-soft); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+  .nav-back:hover { color: var(--terracotta); }
+
+  .case-hero { padding: 9.5rem 3rem 3.5rem; max-width: 760px; margin: 0 auto; }
+  .case-type { font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); background: var(--ochre-tint); padding: 0.35rem 0.9rem; border-radius: 20px; display: inline-block; margin-bottom: 1.5rem; }
+  .case-title { font-family: var(--font-display); font-weight: 700; font-style: italic; letter-spacing: -0.02em; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.1; margin-bottom: 1.25rem; }
+  .case-sub { font-size: 1.15rem; color: var(--ink-soft); line-height: 1.65; margin-bottom: 2rem; }
+  .case-meta { display: flex; flex-wrap: wrap; gap: 2rem; padding-top: 1.75rem; border-top: 2px solid var(--line); }
+  .meta-item h4 { font-family: var(--font-body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 0.4rem; }
+  .meta-item p { font-size: 0.9rem; color: var(--ink); font-weight: 600; }
+
+  article { max-width: 760px; margin: 0 auto; padding: 0 3rem 6rem; }
+  article h2 { font-family: var(--font-display); font-weight: 700; font-style: italic; font-size: 1.6rem; letter-spacing: -0.01em; margin: 3.5rem 0 1.25rem; color: var(--ink); }
+  article h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; margin: 2rem 0 0.9rem; color: var(--ink); }
+  article h2:first-child { margin-top: 0; }
+  article p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.85; margin-bottom: 1.1rem; }
+  article ul, article ol { margin: 0 0 1.1rem 1.3rem; color: var(--ink-soft); font-size: 1.02rem; line-height: 1.75; }
+  article li { margin-bottom: 0.5rem; }
+  article strong { color: var(--ink); font-weight: 700; }
+  .callout { background: var(--card); border: 2px solid var(--line); border-left: 4px solid var(--terracotta); border-radius: 10px; padding: 1.5rem 1.75rem; margin: 1.75rem 0; }
+  .callout p { margin-bottom: 0; color: var(--ink); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 1.75rem 0; }
+  .stat { background: var(--card); border: 2px solid var(--line); border-radius: 12px; padding: 1.25rem; text-align: center; }
+  .stat .num { font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; color: var(--terracotta); }
+  .stat .label { font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; color: var(--ink-mute); text-transform: uppercase; margin-top: 0.3rem; }
+  .study-divider { display: flex; align-items: center; gap: 1rem; margin: 3rem 0 1.5rem; }
+  .study-divider span { font-family: var(--font-body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); white-space: nowrap; }
+  .study-divider::after { content: ''; flex: 1; height: 2px; background: var(--line); }
+
+  .img-full { width: 100%; border-radius: 14px; border: 2px solid var(--line); display: block; margin-top: 1.25rem; }
+  .img-caption { font-family: var(--font-body); font-size: 0.72rem; font-weight: 600; color: var(--ink-mute); margin-top: 0.6rem; margin-bottom: 0 !important; text-align: center; }
+  figure { margin: 0; }
+  .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.25rem; }
+  @media (max-width: 640px) { .img-grid { grid-template-columns: 1fr; } }
+  .img-grid img { width: 100%; height: 460px; object-fit: contain; border-radius: 14px; border: 2px solid var(--line); display: block; background: var(--card); }
+  .compare-block { margin-top: 2rem; }
+  .compare-label { font-family: var(--font-body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0; display: block; }
+  .compare-label.before { color: var(--ink-mute); }
+  .compare-label.after { color: var(--teal); }
+  .task-label { font-family: var(--font-display); font-weight: 700; font-style: italic; font-size: 1.2rem; margin: 2.25rem 0 0.5rem; }
+
+  .case-nav { max-width: 760px; margin: 0 auto; padding: 3rem 3rem 5rem; display: flex; justify-content: space-between; border-top: 2px solid var(--line); }
+  .case-nav a { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+  .case-nav a:hover { color: var(--terracotta); }
+
+  @media (max-width: 700px) { nav, .case-hero, article, .case-nav { padding-left: 1.5rem; padding-right: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sana Afreen</a>
+  <a href="index.html#work" class="nav-back">← Back to Work</a>
+</nav>
+
+<div class="case-hero">
+  <span class="case-type">UX Research</span>
+  <h1 class="case-title">Project Gutenberg</h1>
+  <p class="case-sub">A two-phase research engagement into Project Gutenberg's usability — first mapping how the site's structure should work, then validating how the live site actually performs against that standard.</p>
+  <div class="case-meta">
+    <div class="meta-item"><h4>Role</h4><p>Researcher, both phases</p></div>
+    <div class="meta-item"><h4>Team</h4><p>Collaborative research</p></div>
+    <div class="meta-item"><h4>Methods</h4><p>Card sorting, tree testing, HE, CW, usability testing</p></div>
+  </div>
+</div>
+
+<article>
+  <h2>The Problem</h2>
+  <p>Project Gutenberg hosts over 70,000 free eBooks and runs entirely on volunteers, but its information architecture hasn't meaningfully evolved with it. I approached this in two phases: first understanding how the content <em>should</em> be organized from the ground up, then evaluating how the <em>current</em> site actually performs against usability standards. Together they show a fuller research toolkit than either phase alone.</p>
+
+  <div class="study-divider"><span>Phase 1 — Mapping the Structure</span></div>
+  <ul>
+    <li><strong>Content inventory</strong> mapped the top two levels of the existing navigation and surfaced an immediate problem: despite being volunteer-run and donation-dependent, neither "Volunteer" nor "Donate" had a place in that top-level structure — both were buried inside a generic "Help" menu. "Frequently Downloaded" was flagged the same way: useful content with no top-level home. On the actual live pages, this showed up concretely — the book category page leaned on the term "Bookshelf" where "Genres" or "Categories" would match how people actually talk, and its "Main Categories" list was a bare alphabetical text wall with no visual structure. Volunteer information existed, but only as a few lines on the homepage with no prominence, or buried two clicks deep under Help → FAQ.</li>
+    <li><strong>Closed card sorting</strong>, run across three rounds via ProvenByUsers, converging steadily: a 2-participant pilot took the category set from <strong>7 groups / 34 cards down to 7 groups / 26 cards</strong>; the first full round (5 participants) cut it further to <strong>6 groups / 18 cards</strong>; the second round (9 participants) held stable at <strong>6 groups / 18 cards</strong>, meaning the structure itself had converged and only wording was still moving. Specific findings along the way: "Help" was renamed "Need Help" after users weren't sure if it meant help topics or asking for help; "Ways to Donate" simplified to "Donate." "Want to Contribute" — designed as one combined hub for volunteering and book submission — turned out to be two different mental models, so it split into separate "Volunteer" and "Book Submission" categories. "Bookshelves" tested better than expected as a label (80% correct identification) but became an over-broad catchall, absorbing cards meant for other categories. By the second round, the remaining friction was almost entirely naming, not structure: "Content Format" became "File Types Project Gutenberg Uses" and then simplified again to "Help with File Types"; every donation method got a consistent "Donate Through [Method]" prefix after testing showed users didn't reliably recognize a service like Buy Me a Coffee by name alone.</li>
+    <li><strong>Task-based heuristic analysis</strong> graded the live site against two representative tasks — finding and downloading a cooking book (chosen because it's likely the single most common task on the site, with less genre ambiguity than most other books), and finding the Volunteer FAQ (flagged as high-risk by the content inventory, and confirmed as a core user goal in the personas/scenarios work). Each task was scored across 7 criteria — supporting users' mental models, surfacing options and feedback, leveraging design conventions, visual consistency, recognition over recall, error prevention, and recovery from mistakes — on a 5-point scale. The overall average landed at <strong>2.5 out of 5</strong>. "Help users recover from mistakes" scored best at 3.3; "mental models" and "recognition rather than recall" scored worst at 2.0. Concretely, that meant: Authors, Subjects, and Bookshelves were presented as filters but didn't match how people actually think about filtering; results were sorted by popularity only, with no other sort options surfaced; and several icons were confusing without a label.</li>
+    <li><strong>Tree testing</strong> ran in three rounds and tracked the sitemap's real-world usability as it evolved. The <strong>pilot</strong> (7 participants, 4 tasks — including finding a specific book by title, finding cookbooks, submitting a public-domain book, and donating via PayPal) produced the first full draft sitemap, which the test itself was built on. <strong>Round 1</strong> held the sitemap's structure steady (6 groups / 18 cards, unchanged) and surfaced only naming friction — "Book Submission" became "Upload a Book," "Bug Report" became "Report a Problem" — while the overly specific "find this exact title" task was swapped for a more broadly relevant volunteering task. <strong>Round 2</strong>, the final round, was the strongest result of the whole process: <strong>3 of 4 tasks were completed correctly by 100% of participants</strong>, every task cleared an 80%+ success rate, and across all four tasks combined, participants took an indirect route only 6 times total. The single task with any wrong-path selection was the cookbook search, where one participant chose "Popular" instead of "Cooking" — a reasonable, defensible choice rather than a real navigation failure. The round produced no further changes to the sitemap; the structure had earned its confidence.</li>
+    <li><strong>Wireframes</strong> translated the validated structure into two task flows. For book search, a prominent homepage search bar and a dedicated genres/categories page (dropdown selector, alphabetical and numeric pagination, grid layout for results) replaced the old flat, popularity-only results list. For volunteering, "Volunteer" moved into the primary navigation as its own item, landing on a dedicated page that explains what volunteering involves, requires no experience, and ends in a clear "Volunteer Now!" call to action — replacing a path that used to require digging through Help → FAQ to find.</li>
+  </ul>
+
+  <figure>
+    <img src="../images/GutenbergSitemap.png" alt="Final sitemap of Project Gutenberg's redesigned information architecture, showing six top-level navigation categories: Bookshelves, Donate, Volunteer, Book Submissions, Need Help, and About Us, each with their sub-pages mapped out" class="img-full">
+    <p class="img-caption">Final sitemap — six top-level categories replacing the original buried structure</p>
+  </figure>
+
+  <p class="task-label">Task 1 — Searching for a book by category</p>
+  <div class="compare-block">
+    <span class="compare-label before">Before</span>
+    <div class="img-grid">
+      <figure>
+        <img src="../images/PG Task 1 current website Page 1.png" alt="Current Project Gutenberg category search results, showing Authors, Subjects, and Bookshelves presented as if they were filters" class="img-full">
+        <p class="img-caption">Authors / Subjects / Bookshelves presented as filters, but don't match a filter mental model</p>
+      </figure>
+      <figure>
+        <img src="../images/PG Task 1 current website Page 2.png" alt="Current Project Gutenberg cooking category results, sorted only by popularity with no other sort options" class="img-full">
+        <p class="img-caption">Results sorted by popularity only — no other sort or refine options surfaced</p>
+      </figure>
+    </div>
+  </div>
+  <div class="compare-block">
+    <span class="compare-label after">After</span>
+    <div class="img-grid">
+      <figure>
+        <img src="../images/PG Task 1 Wire 1.png" alt="Redesigned Project Gutenberg homepage with a prominent, clearly visible search bar" class="img-full">
+        <p class="img-caption">Search bar moved to a prominent homepage position</p>
+      </figure>
+      <figure>
+        <img src="../images/PG Task 1 Wire 2.png" alt="Redesigned navigation menu showing Bookshelves, Donate, Volunteer, Book Submissions, Need Help, and About Us as top-level items" class="img-full">
+        <p class="img-caption">New top-level nav matching the validated sitemap</p>
+      </figure>
+      <figure>
+        <img src="../images/PG Task 1 wire 3.png" alt="Redesigned Genres and Categories page with a dropdown selector for genre" class="img-full">
+        <p class="img-caption">Dedicated genres/categories page with a dropdown selector</p>
+      </figure>
+      <figure>
+        <img src="../images/PG Task 1 wire 4.png" alt="Redesigned Fantasy category results page with a grid layout, alphabetical sorting, and page-based pagination" class="img-full">
+        <p class="img-caption">Grid results with real sort options and pagination</p>
+      </figure>
+    </div>
+  </div>
+
+  <p class="task-label">Task 2 — Finding volunteer information</p>
+  <div class="compare-block">
+    <span class="compare-label before">Before</span>
+    <div class="img-grid">
+      <figure>
+        <img src="../images/PG Task 2 current website Page 1.png" alt="Current Project Gutenberg navigation showing volunteer information buried three levels deep under Menu > Help > Frequently Asked Questions" class="img-full">
+        <p class="img-caption">Volunteer info buried under Help → FAQ, three taps deep</p>
+      </figure>
+      <figure>
+        <img src="../images/PG Task 2 current website Page 2.png" alt="Current Project Gutenberg FAQ page with a brief, easy-to-miss paragraph about how volunteers contribute books" class="img-full">
+        <p class="img-caption">Once found, volunteer info is a brief paragraph with no clear next step</p>
+      </figure>
+    </div>
+  </div>
+  <div class="compare-block">
+    <span class="compare-label after">After</span>
+    <div class="img-grid">
+      <figure>
+        <img src="../images/PG Task 2 Wire 1.png" alt="Redesigned navigation with Volunteer as its own top-level menu item" class="img-full">
+        <p class="img-caption">"Volunteer" promoted to its own top-level nav item</p>
+      </figure>
+      <figure>
+        <img src="../images/PG Task 2 Wire 2.png" alt="Redesigned dedicated Volunteer page explaining how to get involved, with a clear Volunteer Now call-to-action button" class="img-full">
+        <p class="img-caption">Dedicated page with a clear "Volunteer Now" call to action</p>
+      </figure>
+    </div>
+  </div>
+
+  <div class="study-divider"><span>Phase 2 — Validating the Experience</span></div>
+  <ul>
+    <li><strong>Heuristic evaluation</strong> (Nielsen's heuristics) scored four major violations against the live site: Visibility of System Status (8/10), Help &amp; Documentation (8/10), Consistency &amp; Standards (7/10), Aesthetic/Minimalist Design (6/10).</li>
+    <li><strong>Cognitive walkthrough</strong> mapped ideal paths for three tasks — searching and downloading a book, browsing by category, and donating — against where the real site diverged from them. The task list itself was revised mid-study: an originally planned "submit an eBook" task was swapped for the category-browsing task after early testing showed it was a far more common real-world path than book submission.</li>
+    <li><strong>Moderated usability testing</strong> with 6 participants (think-aloud protocol). All succeeded on Task 1 (find/download). Only one participant failed a task at all — Task 2 (browse by category) — where users split between two different paths, confirming the same ambiguity Phase 1's card sort had already flagged.</li>
+  </ul>
+  <div class="stat-row">
+    <div class="stat"><div class="num">8/10</div><div class="label">System Status Severity</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">Usability Participants</div></div>
+    <div class="stat"><div class="num">3 of 4</div><div class="label">Tasks at 100% Success</div></div>
+  </div>
+  <p>System Usability Scale results were uniformly positive: participants agreed strongly with statements like "I thought the website was easy to use" (~4.5/5) and "I would imagine that most people would learn to use this website very quickly" (~5/5), and disagreed just as strongly with negatively-framed statements like "I would need the support of a technical person to use this" and "I needed to learn a lot of things before I could get going" (both ~1/5). That's a genuinely interesting tension against the rest of the findings: heuristic evaluation scored real structural violations at severity 7–8, and one participant failed a task outright — yet subjective satisfaction stayed high across the board. People can feel confident and still hit a wall on a specific task; perceived usability and task success aren't the same measurement, and this data set is a clean example of where they diverge.</p>
+
+  <h2>Why the two phases matter together</h2>
+  <p>Using two different methodological approaches — one generative, one evaluative — and landing on the same conclusion is stronger evidence than either alone: volunteer and donation information is under-surfaced, and category browsing doesn't match users' mental models. That's what happens when a real usability problem gets tested from two directions and doesn't disappear. It also demonstrates range — generating structure from scratch, and evaluating an existing system against standards, are two different research muscles.</p>
+
+  <h2>Constraints</h2>
+  <div class="callout"><p>Card sorting relied on a free-tier tool that capped participant slots and lost the pilot round's raw data entirely — findings were reconstructed from notes and screenshots. The usability testing sample (6 participants, one pilot) is enough for directional findings but too small to treat the SUS scores as statistically robust. Neither phase had access to someone with deep Project Gutenberg domain expertise, which was a real limitation when trying to understand why the genre/category taxonomy was as messy as it was.</p></div>
+</article>
+
+<div class="case-nav">
+  <a href="fieldnote.html">← Fieldnote</a>
+  <a href="index.html#work">All Work →</a>
+</div>
+
+</body>
+</html>

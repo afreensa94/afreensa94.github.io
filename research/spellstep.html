@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpellStep — Sana Afreen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FBF3E3; --card: #FFFCF5; --terracotta: #C9622E; --terracotta-deep: #A44A1E;
+    --teal: #2E6F5E; --teal-tint: #DCEAE4; --ochre: #E8A33D; --ochre-tint: #FBECD1;
+    --ink: #3D2B1F; --ink-soft: #6B5646; --ink-mute: #9C8B78; --line: #EBD9C3;
+    --font-display: 'Fraunces', Georgia, serif; --font-body: 'Libre Franklin', system-ui, sans-serif;
+  }
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 22px 22px; color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(251,243,227,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-logo { font-family: var(--font-display); font-weight: 700; font-style: italic; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+  .nav-back { color: var(--ink-soft); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+  .nav-back:hover { color: var(--terracotta); }
+
+  .case-hero { padding: 9.5rem 3rem 3.5rem; max-width: 760px; margin: 0 auto; }
+  .case-type { font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); background: var(--ochre-tint); padding: 0.35rem 0.9rem; border-radius: 20px; display: inline-block; margin-bottom: 1.5rem; }
+  .case-title { font-family: var(--font-display); font-weight: 700; font-style: italic; letter-spacing: -0.02em; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.1; margin-bottom: 1.25rem; }
+  .case-sub { font-size: 1.15rem; color: var(--ink-soft); line-height: 1.65; margin-bottom: 2rem; }
+  .case-meta { display: flex; flex-wrap: wrap; gap: 2rem; padding-top: 1.75rem; border-top: 2px solid var(--line); }
+  .meta-item h4 { font-family: var(--font-body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 0.4rem; }
+  .meta-item p { font-size: 0.9rem; color: var(--ink); font-weight: 600; }
+
+  article { max-width: 760px; margin: 0 auto; padding: 0 3rem 6rem; }
+  article h2 { font-family: var(--font-display); font-weight: 700; font-style: italic; font-size: 1.6rem; letter-spacing: -0.01em; margin: 3.5rem 0 1.25rem; color: var(--ink); }
+  article h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; margin: 2rem 0 0.9rem; color: var(--ink); }
+  article h2:first-child { margin-top: 0; }
+  article p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.85; margin-bottom: 1.1rem; }
+  article ul, article ol { margin: 0 0 1.1rem 1.3rem; color: var(--ink-soft); font-size: 1.02rem; line-height: 1.75; }
+  article li { margin-bottom: 0.5rem; }
+  article strong { color: var(--ink); font-weight: 700; }
+  .callout { background: var(--card); border: 2px solid var(--line); border-left: 4px solid var(--terracotta); border-radius: 10px; padding: 1.5rem 1.75rem; margin: 1.75rem 0; }
+  .callout p { margin-bottom: 0; color: var(--ink); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 1.75rem 0; }
+  .stat { background: var(--card); border: 2px solid var(--line); border-radius: 12px; padding: 1.25rem; text-align: center; }
+  .stat .num { font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; color: var(--terracotta); }
+  .stat .label { font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; color: var(--ink-mute); text-transform: uppercase; margin-top: 0.3rem; }
+
+  .case-nav { max-width: 760px; margin: 0 auto; padding: 3rem 3rem 5rem; display: flex; justify-content: space-between; border-top: 2px solid var(--line); }
+  .case-nav a { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+  .case-nav a:hover { color: var(--terracotta); }
+
+  .img-full { width: 100%; border-radius: 14px; border: 2px solid var(--line); display: block; margin-top: 1.25rem; }
+  .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.25rem; }
+  @media (max-width: 640px) { .img-grid { grid-template-columns: 1fr; } }
+  .img-grid img { width: 100%; border-radius: 14px; border: 2px solid var(--line); display: block; }
+  .img-caption { font-family: var(--font-body); font-size: 0.72rem; font-weight: 600; color: var(--ink-mute); margin-top: 0.6rem; margin-bottom: 0 !important; text-align: center; }
+  figure { margin: 0; }
+
+  @media (max-width: 700px) { nav, .case-hero, article, .case-nav { padding-left: 1.5rem; padding-right: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sana Afreen</a>
+  <a href="index.html#work" class="nav-back">← Back to Work</a>
+</nav>
+
+<div class="case-hero">
+  <span class="case-type">UX Research · Lead</span>
+  <h1 class="case-title">SpellStep</h1>
+  <p class="case-sub">Task-initiation scaffolding for neurodivergent students — built on a literature review, five interviews, heuristic evaluation, and two rounds of usability testing.</p>
+  <div class="case-meta">
+    <div class="meta-item"><h4>Role</h4><p>Lead UX Research, Documentation, UX Design (2nd iteration)</p></div>
+    <div class="meta-item"><h4>Team</h4><p>4-person team</p></div>
+    <div class="meta-item"><h4>Methods</h4><p>Lit review, interviews, HE, CW, usability testing</p></div>
+  </div>
+</div>
+
+<article>
+  <h2>The Problem</h2>
+  <p>Productivity apps are built to help people organize tasks, but most of them assume the hard part is staying on track. For students with ADHD and other neurodivergent conditions, the harder part is often just <em>starting</em> — task initiation, not task completion. Existing tools compound this: punishment-based streak systems, cluttered gamification, and reward mechanics that were supposed to motivate instead produced guilt and overwhelm.</p>
+  <ul>
+    <li>Where exactly does task initiation break down for neurodivergent users, and why?</li>
+    <li>Do existing productivity apps help or hurt at that specific moment?</li>
+    <li>What would a task-support tool look like if it were built around emotional regulation instead of streaks and rewards?</li>
+  </ul>
+
+  <h2>Methodology — and why we chose it</h2>
+  <p>Task initiation is both a cognitive and emotional problem, so we used a mixed-method approach specifically because no single method captures both.</p>
+  <ul>
+    <li><strong>Literature review</strong> — 3 peer-reviewed articles, chosen to cover different angles of the same problem. One examined why gamified focus apps (Focus Quest, Forest, Study Bunny) can become the very distraction they're meant to prevent — what the paper called the "focus paradox." A second found that gamification only motivates when it makes users feel capable and in control; when it reads as pressure, rewards like points or badges actively demotivate, and simple feedback outperforms heavy reward systems for users who get easily overwhelmed. A third studied chess-based training games for ADHD teens and found they didn't improve executive function overall, but did measurably help with emotional regulation and attention — evidence that simple, structured game mechanics can help without adding stress.</li>
+    <li><strong>Heuristic evaluation + cognitive walkthrough</strong> of two competitors (Forest, Focus Quest) using the UI Tenets and Trap Cards framework. Both apps made it unclear what to do first — Focus Quest front-loaded too many choices, Forest required users to remember how to start or restart a timer — and both had moments that added guilt or pressure, like punishing visuals or lost progress.</li>
+    <li><strong>5 semi-structured interviews</strong> with ADHD and AuDHD students — recorded and affinity-mapped, each session covering task-initiation experience, a competitor walkthrough, and post-task emotional reflection.</li>
+    <li><strong>Personas</strong>, built from the literature review, heuristic evaluation, walkthrough, and journey mapping combined (not interviews alone) — Sharon and Alex, used as concrete reference points for every subsequent design decision.</li>
+    <li><strong>Journey mapping</strong> (Miro) — Sharon's map traced the "before SpellStep" experience: task overload, switching between apps, confusion, avoidance, last-minute panic. Alex's map showed the target experience: visual chunking, gentle nudges, simple paths, motivational cues. Both maps surfaced the same underlying emotional blockers — guilt, shame, pressure, perfectionism — that became the design brief's real target.</li>
+    <li><strong>Information architecture study</strong> — an open card sort with 24 cards (Optimal Workshop) to see how users naturally grouped and labeled focus-related concepts like planning, steps, rewards, and emotional support, before we designed any structure around them.</li>
+    <li><strong>Tree testing</strong> (UXArmy) on our early navigation, to catch IA problems before anything was clickable.</li>
+    <li><strong>Two rounds of usability testing</strong> on a Figma prototype — Round 1 with 1 participant to catch major issues fast, Round 2 with 3 participants to confirm fixes worked.</li>
+  </ul>
+
+  <figure>
+    <img src="../images/SpellStep Affinity Map.webp" alt="Affinity diagram showing 6 research themes: Task Initiation & Overwhelm, External Structure & Support, Environment Preferences, Motivation & Progress, Tool Usage & Preferences, Feedback & Emotional Safety" class="img-full">
+    <p class="img-caption">Affinity diagram — 6 themes synthesized across 5 interview participants</p>
+  </figure>
+
+  <div class="img-grid">
+    <figure>
+      <img src="../images/SpellStepSharonPersona.webp" alt="Sharon persona — 20 year old ADHD student, needs tasks broken into clear steps, pain points include task overwhelm and deadline dependency">
+      <p class="img-caption">Sharon — overwhelmed, deadline-dependent</p>
+    </figure>
+    <figure>
+      <img src="../images/SpellStepAlexPersona.jpg" alt="Alex persona — 25 year old AuDHD student, needs gentle feedback and visual progress, pain points include perfection paralysis and task avoidance">
+      <p class="img-caption">Alex — perfection paralysis, avoidance spiral</p>
+    </figure>
+  </div>
+
+  <figure>
+    <img src="../images/SpellStepJourneyMap1.png" alt="Sharon's journey map showing emotional arc from task overload through tool-switching, avoidance spiral, and last-minute scramble — with design opportunities at each stage" class="img-full">
+    <p class="img-caption">Sharon — Task Overload → Tool-switching → Avoidance → Last-minute Scramble</p>
+  </figure>
+  <figure style="margin-top: 1.75rem;">
+    <img src="../images/SpellStepJourneyMap2.png" alt="Alex's journey map showing perfection paralysis, planning but not starting, task avoidance, and finally a kind spark of momentum from SpellStep's companion" class="img-full">
+    <p class="img-caption">Alex — Perfection Paralysis → Planning Loop → Avoidance → Kind Spark of Momentum</p>
+  </figure>
+
+  <h2>Narrowing the scope</h2>
+  <p>We didn't start with "Autistic + ADHD students." We started with "everyone who struggles with productivity," and narrowed twice: all users → neurodivergent users → specifically Autistic + ADHD users. Trying to design for everyone would have diluted every finding that came after it. This narrowing was the decision that made the rest of the research possible.</p>
+
+  <h2>What we found</h2>
+  <p>Interviews surfaced a consistent theme: users didn't fear failing a task, they feared <em>starting</em> something large and unclear. Heuristic evaluation found that narrative depth (Focus Quest) increased cognitive load at exactly the moment users needed the least friction, while simplicity without support (Forest) left users without enough structure to begin.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="num">1 → 3</div><div class="label">Participants, Round 1 → 2</div></div>
+    <div class="stat"><div class="num">5</div><div class="label">Interviews, ADHD/AuDHD</div></div>
+    <div class="stat"><div class="num">3</div><div class="label">Peer-reviewed sources</div></div>
+  </div>
+  <p>Round 1 usability testing surfaced discoverability problems: the pet companion, prioritization arrows, locking mechanic, and progress map weren't self-explanatory the way our early sketches assumed. Round 2 — after adding explicit icons, clearer microcopy ("Decide for Me"), and consistent lock indicators — confirmed the fixes worked.</p>
+
+  <h2>Design implications</h2>
+  <ul>
+    <li>We <strong>scrapped written narrative dialogue</strong> entirely for lighter, non-intrusive visual storytelling — literature and testing both showed heavy narrative overwhelmed exactly the users we were designing for.</li>
+    <li>We added a <strong>lock feature per chunked task</strong> after interviews revealed users focused better when they could hide everything except the current step.</li>
+    <li>We <strong>removed reward/streak systems</strong> almost entirely, replacing them with calm, low-stakes feedback.</li>
+  </ul>
+
+  <h2>Constraints</h2>
+  <p>We worked with a small team and a fixed timeline, which is why the scope narrowed as aggressively as it did, and why usability testing topped out at 3 participants in the final round. Our sample was enough to find directional patterns, not to claim statistical confidence.</p>
+
+  <h2>Reflection</h2>
+  <div class="callout"><p>What I'd do differently: run the tree test earlier. We caught IA problems through it, but only after some early design decisions were already emotionally "sunk cost" for the team. Testing structure before visual design would have saved a revision cycle.</p></div>
+</article>
+
+<div class="case-nav">
+  <a href="index.html#work">← All Work</a>
+  <a href="forced-migration.html">Nuances of Forced Migration →</a>
+</div>
+
+</body>
+</html>

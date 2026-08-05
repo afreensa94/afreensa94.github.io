@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuances of Forced Migration — Sana Afreen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FBF3E3; --card: #FFFCF5; --terracotta: #C9622E; --terracotta-deep: #A44A1E;
+    --teal: #2E6F5E; --teal-tint: #DCEAE4; --ochre: #E8A33D; --ochre-tint: #FBECD1;
+    --ink: #3D2B1F; --ink-soft: #6B5646; --ink-mute: #9C8B78; --line: #EBD9C3;
+    --font-display: 'Fraunces', Georgia, serif; --font-body: 'Libre Franklin', system-ui, sans-serif;
+  }
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 22px 22px; color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(251,243,227,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-logo { font-family: var(--font-display); font-weight: 700; font-style: italic; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+  .nav-back { color: var(--ink-soft); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+  .nav-back:hover { color: var(--terracotta); }
+
+  .case-hero { padding: 9.5rem 3rem 3.5rem; max-width: 760px; margin: 0 auto; }
+  .case-type { font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); background: var(--ochre-tint); padding: 0.35rem 0.9rem; border-radius: 20px; display: inline-block; margin-bottom: 1.5rem; }
+  .case-title { font-family: var(--font-display); font-weight: 700; font-style: italic; letter-spacing: -0.02em; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.1; margin-bottom: 1.25rem; }
+  .case-sub { font-size: 1.15rem; color: var(--ink-soft); line-height: 1.65; margin-bottom: 2rem; }
+  .case-meta { display: flex; flex-wrap: wrap; gap: 2rem; padding-top: 1.75rem; border-top: 2px solid var(--line); }
+  .meta-item h4 { font-family: var(--font-body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 0.4rem; }
+  .meta-item p { font-size: 0.9rem; color: var(--ink); font-weight: 600; }
+
+  article { max-width: 760px; margin: 0 auto; padding: 0 3rem 6rem; }
+  article h2 { font-family: var(--font-display); font-weight: 700; font-style: italic; font-size: 1.6rem; letter-spacing: -0.01em; margin: 3.5rem 0 1.25rem; color: var(--ink); }
+  article h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; margin: 1.75rem 0 0.85rem; color: var(--ink); }
+  article h2:first-child { margin-top: 0; }
+  article p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.85; margin-bottom: 1.1rem; }
+  article ul, article ol { margin: 0 0 1.1rem 1.3rem; color: var(--ink-soft); font-size: 1.02rem; line-height: 1.75; }
+  article li { margin-bottom: 0.5rem; }
+  article strong { color: var(--ink); font-weight: 700; }
+  .callout { background: var(--card); border: 2px solid var(--line); border-left: 4px solid var(--terracotta); border-radius: 10px; padding: 1.5rem 1.75rem; margin: 1.75rem 0; }
+  .callout p { margin-bottom: 0; color: var(--ink); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 1.75rem 0; }
+  .stat { background: var(--card); border: 2px solid var(--line); border-radius: 12px; padding: 1.25rem; text-align: center; }
+  .stat .num { font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; color: var(--terracotta); }
+  .stat .label { font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; color: var(--ink-mute); text-transform: uppercase; margin-top: 0.3rem; }
+
+  .case-nav { max-width: 760px; margin: 0 auto; padding: 3rem 3rem 5rem; display: flex; justify-content: space-between; border-top: 2px solid var(--line); }
+  .case-nav a { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+  .case-nav a:hover { color: var(--terracotta); }
+
+  @media (max-width: 700px) { nav, .case-hero, article, .case-nav { padding-left: 1.5rem; padding-right: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sana Afreen</a>
+  <a href="index.html#work" class="nav-back">← Back to Work</a>
+</nav>
+
+<div class="case-hero">
+  <span class="case-type">eLearning · UX Research</span>
+  <h1 class="case-title">Nuances of Forced Migration</h1>
+  <p class="case-sub">An interactive e-learning course on the systems behind forced displacement, evaluated with a pre/post-test design measuring both knowledge gain and empathy shift.</p>
+  <div class="case-meta">
+    <div class="meta-item"><h4>Role</h4><p>Lead Instructional Designer &amp; UX Researcher</p></div>
+    <div class="meta-item"><h4>Format</h4><p>6 modules, 15–30 min</p></div>
+    <div class="meta-item"><h4>Methods</h4><p>Pre/post-test, Likert, open-ended reflection</p></div>
+  </div>
+</div>
+
+<article>
+  <h2>The Problem</h2>
+  <p>Most educational content on forced migration stays at the surface — conflict as a headline cause, displacement as a single event rather than a system. The goal here was to build a course that could hold the layered complexity of forced migration (conflict, persecution, climate disaster, economic hardship, and the policies that trap people in motion) without losing high school and college-aged learners, and to do it in a way that represented lived experience with dignity rather than as an abstraction.</p>
+  <p>Design goals going in: simplify complexity without compromising depth, apply ELSI (Ethical, Legal, Social Implications) principles to the topic, build a framework for layered learning that moves from personal impact to global systems, and evoke empathy without exploiting the subject matter.</p>
+
+  <h2>Methodology</h2>
+  <p>Learning outcomes were tested using a <strong>pre/post-test design</strong> with 6 participants — graduate students with varying prior knowledge of forced migration, recruited by convenience sampling. The sample was intentionally kept small to respect time constraints, with the known trade-off of limited statistical generalizability.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="num">6</div><div class="label">Participants</div></div>
+    <div class="stat"><div class="num">2</div><div class="label">Instruments (pre + post)</div></div>
+    <div class="stat"><div class="num">3</div><div class="label">Learning objectives measured</div></div>
+  </div>
+  <h3>Instruments</h3>
+  <ul>
+    <li><strong>Pre-test</strong> (8 questions, multiple choice) — mapped to LO1: foundational knowledge of forced migration's causes and affected populations.</li>
+    <li><strong>Post-test</strong> (10 questions — multiple choice, Likert confidence rating, and an open-ended reflection) — mapped across LO1, LO2, and LO3.</li>
+  </ul>
+  <p>The Likert and open-ended questions weren't in the original design — they were added mid-process, after early testing showed the multiple-choice-only instrument couldn't capture whether the course was actually shifting empathy, only whether it was transferring facts. That revision is the methodological decision I'd point to first: recognizing an instrument doesn't measure what you actually care about, and fixing it before running the full study rather than after.</p>
+
+  <h2>Findings</h2>
+  <h3>Knowledge (LO1)</h3>
+  <p>Most participants entered with pre-existing foundational knowledge, so post-test responses showed nuanced shifts rather than dramatic gains — one participant moved from selecting "All of the above" to identifying a specific cause (persecution and political instability), suggesting the course deepened understanding rather than introducing it from zero.</p>
+  <h3>Emotional Understanding (LO2)</h3>
+  <p>A branching, choice-based module — built with the same interactive-narrative mechanics used in narrative games — placed learners directly in the role of a displaced individual facing survival decisions. It was the primary driver of LO2 outcomes: post-test responses shifted from factual recall toward personal, emotional reflection specifically after that module.</p>
+  <h3>Empathy &amp; Behavioral Insight (LO3)</h3>
+  <p><strong>2 of 6 participants</strong> explicitly expressed empathy in their open-ended post-test responses, with several expressing a desire to help create safer spaces for displaced people — a behavioral-intention shift that went beyond what the course's stated knowledge objectives were even asking for.</p>
+
+  <h2>Design implications</h2>
+  <ul>
+    <li><strong>Scenario-based learning drove the affective outcomes</strong> — the branching, choice-based module outperformed the purely informational modules on every empathy-related measure, which reprioritized where design effort went in later revisions.</li>
+    <li><strong>Cognitive and emotional load had to be balanced deliberately</strong> — keeping the course to 15–30 minutes across segmented modules was a direct response to the subject's emotional weight, not just a pacing preference.</li>
+    <li><strong>Pre-existing knowledge reframed the goal</strong> — with an already-informed audience, the design objective shifted from teaching facts to deepening perspective, which changed how later modules were written.</li>
+  </ul>
+
+  <h2>Constraints</h2>
+  <div class="callout"><p>Small sample size (n=6) limits statistical significance and generalizability. Convenience sampling from one population may not reflect how more diverse learners would respond. Self-reported empathy is also difficult to validate on its own terms — these responses reflect stated intention, not observed behavior, and I'd want a behavioral or longitudinal follow-up before treating the empathy findings as more than directional.</p></div>
+</article>
+
+<div class="case-nav">
+  <a href="spellstep.html">← SpellStep</a>
+  <a href="fieldnote.html">Fieldnote →</a>
+</div>
+
+</body>
+</html>
